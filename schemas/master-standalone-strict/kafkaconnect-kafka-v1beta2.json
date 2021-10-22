@@ -1,0 +1,11 @@
+{
+  "type": "object",
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "kafka.strimzi.io",
+      "kind": "KafkaConnect",
+      "version": "v1beta2"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

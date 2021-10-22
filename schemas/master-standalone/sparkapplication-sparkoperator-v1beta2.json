@@ -1,0 +1,11 @@
+{
+  "type": "object",
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "sparkoperator.k8s.io",
+      "kind": "SparkApplication",
+      "version": "v1beta2"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}
