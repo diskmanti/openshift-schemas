@@ -45,7 +45,7 @@
     },
     "roleRef": {
       "description": "RoleRef can only reference the current namespace and the global namespace. If the ClusterRoleRef cannot be resolved, the Authorizer must return an error. Since Policy is a singleton, this is sufficient knowledge to locate a role.",
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference_v2"
     },
     "subjects": {
       "description": "Subjects hold object references to authorize with this rule. This field is ignored if UserNames or GroupNames are specified to support legacy clients and servers. Thus newer clients that do not need to support backwards compatibility should send only fully qualified Subjects and should omit the UserNames and GroupNames fields. Clients that need to support backwards compatibility can use this field to build the UserNames and GroupNames.",
@@ -54,7 +54,7 @@
         "null"
       ],
       "items": {
-        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference"
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference_v2"
       }
     },
     "userNames": {

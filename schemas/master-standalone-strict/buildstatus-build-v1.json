@@ -30,7 +30,7 @@
     },
     "config": {
       "description": "config is an ObjectReference to the BuildConfig this Build is based on.",
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference_v2"
     },
     "duration": {
       "description": "duration contains time.Duration object describing build time.",

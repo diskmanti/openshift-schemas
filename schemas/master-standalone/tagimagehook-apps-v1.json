@@ -15,7 +15,7 @@
     },
     "to": {
       "description": "To is the target ImageStreamTag to set the container's image onto.",
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference_v2"
     }
   },
   "$schema": "http://json-schema.org/schema#"

@@ -4,7 +4,7 @@
   "properties": {
     "fromRef": {
       "description": "fromRef contains detailed information about an image that triggered a build.",
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference_v2"
     },
     "imageID": {
       "description": "imageID is the ID of the image that triggered a a new build.",

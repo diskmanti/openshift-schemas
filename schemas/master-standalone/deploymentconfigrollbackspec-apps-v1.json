@@ -11,7 +11,7 @@
   "properties": {
     "from": {
       "description": "From points to a ReplicationController which is a deployment.",
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference_v2"
     },
     "includeReplicationMeta": {
       "description": "IncludeReplicationMeta specifies whether to include the replica count and selector.",

@@ -7,7 +7,7 @@
   "properties": {
     "from": {
       "description": "From is the source for the image repository to import; only kind DockerImage and a name of a container image repository is allowed",
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference_v2"
     },
     "importPolicy": {
       "description": "ImportPolicy is the policy controlling how the image is imported",
