@@ -63,12 +63,14 @@
               "description": "Name is the name of resource being referenced",
               "type": "string"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "virtualMachineSnapshotName": {
           "type": "string"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "status": {
       "description": "VirtualMachineRestoreStatus is the spec for a VirtualMachineRestoreresource",
@@ -124,7 +126,8 @@
                 "description": "ConditionType is the const type for Conditions",
                 "type": "string"
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "deletedDataVolumes": {
@@ -178,10 +181,12 @@
               "volumeSnapshotName": {
                 "type": "string"
               }
-            }
+            },
+            "additionalProperties": false
           }
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -191,5 +196,6 @@
       "version": "v1alpha1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

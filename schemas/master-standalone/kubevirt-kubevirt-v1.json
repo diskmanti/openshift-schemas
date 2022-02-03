@@ -125,6 +125,100 @@
             "null"
           ],
           "properties": {
+            "apiConfiguration": {
+              "description": "ReloadableComponentConfiguration holds all generic k8s configuration options which can be reloaded by components without requiring a restart.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "restClient": {
+                  "description": "RestClient can be used to tune certain aspects of the k8s client in use.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "rateLimiter": {
+                      "description": "RateLimiter allows selecting and configuring different rate limiters for the k8s client.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "tokenBucketRateLimiter": {
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "required": [
+                            "burst",
+                            "qps"
+                          ],
+                          "properties": {
+                            "burst": {
+                              "description": "Maximum burst for throttle. If it's zero, the component default will be used",
+                              "type": "integer"
+                            },
+                            "qps": {
+                              "description": "QPS indicates the maximum QPS to the apiserver from this client. If it's zero, the component default will be used",
+                              "type": "number"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "controllerConfiguration": {
+              "description": "ReloadableComponentConfiguration holds all generic k8s configuration options which can be reloaded by components without requiring a restart.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "restClient": {
+                  "description": "RestClient can be used to tune certain aspects of the k8s client in use.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "rateLimiter": {
+                      "description": "RateLimiter allows selecting and configuring different rate limiters for the k8s client.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "tokenBucketRateLimiter": {
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "required": [
+                            "burst",
+                            "qps"
+                          ],
+                          "properties": {
+                            "burst": {
+                              "description": "Maximum burst for throttle. If it's zero, the component default will be used",
+                              "type": "integer"
+                            },
+                            "qps": {
+                              "description": "QPS indicates the maximum QPS to the apiserver from this client. If it's zero, the component default will be used",
+                              "type": "number"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
             "cpuModel": {
               "type": [
                 "string",
@@ -134,6 +228,12 @@
             "cpuRequest": {
               "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
               "x-kubernetes-int-or-string": true
+            },
+            "defaultRuntimeClass": {
+              "type": [
+                "string",
+                "null"
+              ]
             },
             "developerConfiguration": {
               "description": "DeveloperConfiguration holds developer options",
@@ -147,6 +247,22 @@
                     "integer",
                     "null"
                   ]
+                },
+                "diskVerification": {
+                  "description": "DiskVerification holds container disks verification limits",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "memoryLimit"
+                  ],
+                  "properties": {
+                    "memoryLimit": {
+                      "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                      "x-kubernetes-int-or-string": true
+                    }
+                  }
                 },
                 "featureGates": {
                   "type": [
@@ -218,6 +334,21 @@
                     "null"
                   ]
                 },
+                "minimumClusterTSCFrequency": {
+                  "description": "Allow overriding the automatically determined minimum TSC frequency of the cluster and fixate the minimum to this frequency.",
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "format": "int64"
+                },
+                "minimumReservePVCBytes": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "format": "int64"
+                },
                 "nodeSelectors": {
                   "type": [
                     "object",
@@ -254,6 +385,53 @@
                   "string",
                   "null"
                 ]
+              }
+            },
+            "handlerConfiguration": {
+              "description": "ReloadableComponentConfiguration holds all generic k8s configuration options which can be reloaded by components without requiring a restart.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "restClient": {
+                  "description": "RestClient can be used to tune certain aspects of the k8s client in use.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "rateLimiter": {
+                      "description": "RateLimiter allows selecting and configuring different rate limiters for the k8s client.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "tokenBucketRateLimiter": {
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "required": [
+                            "burst",
+                            "qps"
+                          ],
+                          "properties": {
+                            "burst": {
+                              "description": "Maximum burst for throttle. If it's zero, the component default will be used",
+                              "type": "integer"
+                            },
+                            "qps": {
+                              "description": "QPS indicates the maximum QPS to the apiserver from this client. If it's zero, the component default will be used",
+                              "type": "number"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
               }
             },
             "imagePullPolicy": {
@@ -305,6 +483,12 @@
                     "null"
                   ],
                   "format": "int64"
+                },
+                "disableTLS": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
                 },
                 "nodeDrainTaintKey": {
                   "type": [
@@ -448,15 +632,18 @@
                     ],
                     "properties": {
                       "externalResourceProvider": {
+                        "description": "If true, KubeVirt will leave the allocation and monitoring to an external device plugin",
                         "type": [
                           "boolean",
                           "null"
                         ]
                       },
                       "pciVendorSelector": {
+                        "description": "The vendor_id:product_id tupple of the PCI device",
                         "type": "string"
                       },
                       "resourceName": {
+                        "description": "The name of the resource that is representing the device. Exposed by a device plugin and requested by VMs. Typically of the form vendor.com/product_nameThe name of the resource that is representing the device. Exposed by a device plugin and requested by VMs. Typically of the form vendor.com/product_name",
                         "type": "string"
                       }
                     }
@@ -521,6 +708,59 @@
                   "null"
                 ]
               }
+            },
+            "virtualMachineInstancesPerNode": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "webhookConfiguration": {
+              "description": "ReloadableComponentConfiguration holds all generic k8s configuration options which can be reloaded by components without requiring a restart.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "restClient": {
+                  "description": "RestClient can be used to tune certain aspects of the k8s client in use.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "rateLimiter": {
+                      "description": "RateLimiter allows selecting and configuring different rate limiters for the k8s client.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "tokenBucketRateLimiter": {
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "required": [
+                            "burst",
+                            "qps"
+                          ],
+                          "properties": {
+                            "burst": {
+                              "description": "Maximum burst for throttle. If it's zero, the component default will be used",
+                              "type": "integer"
+                            },
+                            "qps": {
+                              "description": "QPS indicates the maximum QPS to the apiserver from this client. If it's zero, the component default will be used",
+                              "type": "number"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         },
@@ -530,6 +770,51 @@
             "null"
           ],
           "properties": {
+            "flags": {
+              "description": "Configure the value used for deployment and daemonset resources",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "api": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "additionalProperties": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "controller": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "additionalProperties": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "handler": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "additionalProperties": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              }
+            },
             "patches": {
               "type": [
                 "array",

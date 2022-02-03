@@ -63,7 +63,7 @@
                 }
               },
               "volumeMode": {
-                "description": "volumeMode defines what type of volume is required by the claim. Value of Filesystem is implied when not included in claim spec.",
+                "description": "VolumeMode defines what type of volume is required by the claim. Value of Filesystem is implied when not included in claim spec.",
                 "type": [
                   "string",
                   "null"
@@ -71,6 +71,13 @@
               }
             }
           }
+        },
+        "cloneStrategy": {
+          "description": "CloneStrategy defines the preferred method for performing a CDI clone",
+          "type": [
+            "string",
+            "null"
+          ]
         }
       }
     },
@@ -108,7 +115,7 @@
                 }
               },
               "volumeMode": {
-                "description": "volumeMode defines what type of volume is required by the claim. Value of Filesystem is implied when not included in claim spec.",
+                "description": "VolumeMode defines what type of volume is required by the claim. Value of Filesystem is implied when not included in claim spec.",
                 "type": [
                   "string",
                   "null"
@@ -116,6 +123,13 @@
               }
             }
           }
+        },
+        "cloneStrategy": {
+          "description": "CloneStrategy defines the preferred method for performing a CDI clone",
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "provisioner": {
           "description": "The Storage class provisioner plugin name",

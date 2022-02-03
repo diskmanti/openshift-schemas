@@ -138,9 +138,11 @@
                                     },
                                     "x-kubernetes-list-type": "set"
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "source": {
                             "description": "Source represents where the public keys are pulled from",
@@ -160,11 +162,14 @@
                                     "description": "SecretName represents the name of the secret in the VMI's namespace",
                                     "type": "string"
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "userPassword": {
                         "description": "UserPassword represents the source and method for applying a guest user's password",
@@ -188,7 +193,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "source": {
                             "description": "Source represents where the user passwords are pulled from",
@@ -208,13 +214,17 @@
                                     "description": "SecretName represents the name of the secret in the VMI's namespace",
                                     "type": "string"
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "x-kubernetes-list-type": "atomic"
                 },
@@ -291,7 +301,8 @@
                                             ]
                                           }
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   },
                                   "matchFields": {
@@ -332,17 +343,20 @@
                                             ]
                                           }
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "weight": {
                                 "description": "Weight associated with matching the corresponding nodeSelectorTerm, in the range 1-100.",
                                 "type": "integer",
                                 "format": "int32"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "requiredDuringSchedulingIgnoredDuringExecution": {
@@ -403,7 +417,8 @@
                                             ]
                                           }
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   },
                                   "matchFields": {
@@ -444,15 +459,19 @@
                                             ]
                                           }
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               }
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "podAffinity": {
                       "description": "Describes pod affinity scheduling rules (e.g. co-locate this pod in the same node, zone, etc. as some other pod(s)).",
@@ -530,7 +549,8 @@
                                                 ]
                                               }
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false
                                         }
                                       },
                                       "matchLabels": {
@@ -546,7 +566,8 @@
                                           ]
                                         }
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "namespaces": {
                                     "description": "namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\"",
@@ -565,14 +586,16 @@
                                     "description": "This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed.",
                                     "type": "string"
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "weight": {
                                 "description": "weight associated with matching the corresponding podAffinityTerm, in the range 1-100.",
                                 "type": "integer",
                                 "format": "int32"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "requiredDuringSchedulingIgnoredDuringExecution": {
@@ -636,7 +659,8 @@
                                             ]
                                           }
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   },
                                   "matchLabels": {
@@ -652,7 +676,8 @@
                                       ]
                                     }
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "namespaces": {
                                 "description": "namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\"",
@@ -671,10 +696,12 @@
                                 "description": "This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed.",
                                 "type": "string"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "podAntiAffinity": {
                       "description": "Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod in the same node, zone, etc. as some other pod(s)).",
@@ -752,7 +779,8 @@
                                                 ]
                                               }
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false
                                         }
                                       },
                                       "matchLabels": {
@@ -768,7 +796,8 @@
                                           ]
                                         }
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "namespaces": {
                                     "description": "namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\"",
@@ -787,14 +816,16 @@
                                     "description": "This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed.",
                                     "type": "string"
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "weight": {
                                 "description": "weight associated with matching the corresponding podAffinityTerm, in the range 1-100.",
                                 "type": "integer",
                                 "format": "int32"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "requiredDuringSchedulingIgnoredDuringExecution": {
@@ -858,7 +889,8 @@
                                             ]
                                           }
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   },
                                   "matchLabels": {
@@ -874,7 +906,8 @@
                                       ]
                                     }
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "namespaces": {
                                 "description": "namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\"",
@@ -893,12 +926,15 @@
                                 "description": "This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed.",
                                 "type": "string"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "dnsConfig": {
                   "description": "Specifies the DNS parameters of a pod. Parameters specified here will be merged to the generated DNS configuration based on DNSPolicy.",
@@ -946,7 +982,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "searches": {
@@ -962,7 +999,8 @@
                         ]
                       }
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "dnsPolicy": {
                   "description": "Set DNS policy for the pod. Defaults to \"ClusterFirst\". Valid values are 'ClusterFirstWithHostNet', 'ClusterFirst', 'Default' or 'None'. DNS parameters given in DNSConfig will be merged with the policy selected with DNSPolicy. To have DNS options set along with hostNetwork, you have to specify DNS policy explicitly to 'ClusterFirstWithHostNet'.",
@@ -1015,7 +1053,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "clock": {
                       "description": "Clock sets the clock and timers of the vmi.",
@@ -1052,7 +1091,8 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "hyperv": {
                               "description": "Hyperv (Hypervclock) - lets guests read the host\u2019s wall clock time (paravirtualized). For windows guests.",
@@ -1068,7 +1108,8 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "kvm": {
                               "description": "KVM \t(KVM clock) - lets guests read the host\u2019s wall clock time (paravirtualized). For linux guests.",
@@ -1084,7 +1125,8 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "pit": {
                               "description": "PIT (Programmable Interval Timer) - a timer with periodic interrupts.",
@@ -1107,7 +1149,8 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "rtc": {
                               "description": "RTC (Real Time Clock) - a continuously running timer with periodic interrupts.",
@@ -1137,9 +1180,11 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "timezone": {
                           "description": "Timezone sets the guest clock to the specified timezone. Zone name follows the TZ environment variable format (e.g. 'America/New_York').",
@@ -1162,9 +1207,11 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "cpu": {
                       "description": "CPU allow specified the detailed CPU topology inside the vmi.",
@@ -1215,7 +1262,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "isolateEmulatorThread": {
@@ -1231,6 +1279,23 @@
                             "string",
                             "null"
                           ]
+                        },
+                        "numa": {
+                          "description": "NUMA allows specifying settings for the guest NUMA topology",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "guestMappingPassthrough": {
+                              "description": "GuestMappingPassthrough will create an efficient guest topology based on host CPUs exclusively assigned to a pod. The created topology ensures that memory and CPUs on the virtual numa nodes never cross boundaries of host numa nodes.",
+                              "type": [
+                                "object",
+                                "null"
+                              ]
+                            }
+                          },
+                          "additionalProperties": false
                         },
                         "sockets": {
                           "description": "Sockets specifies the number of sockets inside the vmi. Must be a value greater or equal 1.",
@@ -1248,7 +1313,8 @@
                           ],
                           "format": "int32"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "devices": {
                       "description": "Devices allows adding disks, network interfaces, and others",
@@ -1286,6 +1352,13 @@
                           "description": "Whether or not to enable virtio multi-queue for block devices. Defaults to false.",
                           "type": [
                             "boolean",
+                            "null"
+                          ]
+                        },
+                        "clientPassthrough": {
+                          "description": "To configure and access client devices such as redirecting USB",
+                          "type": [
+                            "object",
                             "null"
                           ]
                         },
@@ -1335,7 +1408,8 @@
                                       "physical": {
                                         "type": "integer"
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "matchVolume": {
                                     "description": "Represents if a feature is enabled or disabled.",
@@ -1351,9 +1425,11 @@
                                           "null"
                                         ]
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "bootOrder": {
                                 "description": "BootOrder is an integer value > 0, used to determine ordering of boot devices. Lower values take precedence. Each disk or interface that has a boot order must have a unique value. Disks without a boot order are not tried if a disk with a boot order exists.",
@@ -1397,7 +1473,8 @@
                                       "null"
                                     ]
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "dedicatedIOThread": {
                                 "description": "dedicatedIOThread indicates this disk should have an exclusive IO Thread. Enabling this implies useIOThreads = true. Defaults to false.",
@@ -1434,7 +1511,8 @@
                                       "null"
                                     ]
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "floppy": {
                                 "description": "Attach a volume as a floppy to the vmi.",
@@ -1457,7 +1535,8 @@
                                       "null"
                                     ]
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "io": {
                                 "description": "IO specifies which QEMU disk IO mode should be used. Supported values are: native, default, threads.",
@@ -1487,7 +1566,8 @@
                                       "null"
                                     ]
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "name": {
                                 "description": "Name is the device name",
@@ -1507,7 +1587,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "filesystems": {
@@ -1534,7 +1615,8 @@
                                 "description": "Virtiofs is supported",
                                 "type": "object"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "x-kubernetes-list-type": "atomic"
                         },
@@ -1561,7 +1643,8 @@
                                 "description": "Name of the GPU device as exposed by a device plugin",
                                 "type": "string"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "x-kubernetes-list-type": "atomic"
                         },
@@ -1588,7 +1671,8 @@
                               "name": {
                                 "type": "string"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "x-kubernetes-list-type": "atomic"
                         },
@@ -1623,7 +1707,8 @@
                                 "description": "Type indicated the type of input device. Supported values: tablet.",
                                 "type": "string"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "interfaces": {
@@ -1706,7 +1791,8 @@
                                           "description": "Value is a String value for the Option provided Required.",
                                           "type": "string"
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   },
                                   "tftpServerName": {
@@ -1716,7 +1802,8 @@
                                       "null"
                                     ]
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "macAddress": {
                                 "description": "Interface MAC address. For example: de:ad:00:00:be:af or DE-AD-00-00-BE-AF.",
@@ -1790,7 +1877,8 @@
                                         "null"
                                       ]
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 }
                               },
                               "slirp": {
@@ -1812,7 +1900,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "networkInterfaceMultiqueue": {
@@ -1860,15 +1949,18 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "name": {
                               "description": "Name of the watchdog.",
                               "type": "string"
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "features": {
                       "description": "Features like acpi, apic, hyperv, smm.",
@@ -1891,7 +1983,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "apic": {
                           "description": "Defaults to the machine type setting.",
@@ -1914,7 +2007,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "hyperv": {
                           "description": "Defaults to the machine type setting.",
@@ -1937,7 +2031,8 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "frequencies": {
                               "description": "Frequencies improves the TSC clock source handling for Hyper-V on KVM. Defaults to the machine type setting.",
@@ -1953,7 +2048,8 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "ipi": {
                               "description": "IPI improves performances in overcommited environments. Requires vpindex. Defaults to the machine type setting.",
@@ -1969,7 +2065,8 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "reenlightenment": {
                               "description": "Reenlightenment enables the notifications on TSC frequency changes. Defaults to the machine type setting.",
@@ -1985,7 +2082,8 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "relaxed": {
                               "description": "Relaxed instructs the guest OS to disable watchdog timeouts. Defaults to the machine type setting.",
@@ -2001,7 +2099,8 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "reset": {
                               "description": "Reset enables Hyperv reboot/reset for the vmi. Requires synic. Defaults to the machine type setting.",
@@ -2017,7 +2116,8 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "runtime": {
                               "description": "Runtime improves the time accounting to improve scheduling in the guest. Defaults to the machine type setting.",
@@ -2033,7 +2133,8 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "spinlocks": {
                               "description": "Spinlocks allows to configure the spinlock retry attempts.",
@@ -2057,7 +2158,8 @@
                                   ],
                                   "format": "int32"
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "synic": {
                               "description": "SyNIC enables the Synthetic Interrupt Controller. Defaults to the machine type setting.",
@@ -2073,7 +2175,8 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "synictimer": {
                               "description": "SyNICTimer enables Synthetic Interrupt Controller Timers, reducing CPU load. Defaults to the machine type setting.",
@@ -2096,7 +2199,8 @@
                                         "null"
                                       ]
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "enabled": {
                                   "type": [
@@ -2104,7 +2208,8 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "tlbflush": {
                               "description": "TLBFlush improves performances in overcommited environments. Requires vpindex. Defaults to the machine type setting.",
@@ -2120,7 +2225,8 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "vapic": {
                               "description": "VAPIC improves the paravirtualized handling of interrupts. Defaults to the machine type setting.",
@@ -2136,7 +2242,8 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "vendorid": {
                               "description": "VendorID allows setting the hypervisor vendor id. Defaults to the machine type setting.",
@@ -2159,7 +2266,8 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "vpindex": {
                               "description": "VPIndex enables the Virtual Processor Index to help windows identifying virtual processors. Defaults to the machine type setting.",
@@ -2175,9 +2283,11 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "kvm": {
                           "description": "Configure how KVM presence is exposed to the guest.",
@@ -2193,7 +2303,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "pvspinlock": {
                           "description": "Notify the guest that the host supports paravirtual spinlocks. For older kernels this feature should be explicitly disabled.",
@@ -2209,7 +2320,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "smm": {
                           "description": "SMM enables/disables System Management Mode. TSEG not yet implemented.",
@@ -2225,9 +2337,11 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "firmware": {
                       "description": "Firmware.",
@@ -2257,7 +2371,8 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "efi": {
                               "description": "If set, EFI will be used instead of BIOS.",
@@ -2273,9 +2388,73 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
+                        },
+                        "kernelBoot": {
+                          "description": "Settings to set the kernel for booting.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "container": {
+                              "description": "Container defines the container that containes kernel artifacts",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "required": [
+                                "image"
+                              ],
+                              "properties": {
+                                "image": {
+                                  "description": "Image that container initrd / kernel files.",
+                                  "type": "string"
+                                },
+                                "imagePullPolicy": {
+                                  "description": "Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "imagePullSecret": {
+                                  "description": "ImagePullSecret is the name of the Docker registry secret required to pull the image. The secret must already exist.",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "initrdPath": {
+                                  "description": "the fully-qualified path to the ramdisk image in the host OS",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "kernelPath": {
+                                  "description": "The fully-qualified path to the kernel image in the host OS",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "kernelArgs": {
+                              "description": "Arguments to be passed to the kernel at boot time",
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            }
+                          },
+                          "additionalProperties": false
                         },
                         "serial": {
                           "description": "The system-serial-number in SMBIOS",
@@ -2291,7 +2470,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "ioThreadsPolicy": {
                       "description": "Controls whether or not disks will share IOThreads. Omitting IOThreadsPolicy disables use of IOThreads. One of: shared, auto",
@@ -2306,15 +2486,16 @@
                         "object",
                         "null"
                       ],
-                      "required": [
-                        "type"
-                      ],
                       "properties": {
                         "type": {
                           "description": "QEMU machine type is the actual chipset of the VirtualMachineInstance.",
-                          "type": "string"
+                          "type": [
+                            "string",
+                            "null"
+                          ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "memory": {
                       "description": "Memory allow specifying the VMI memory features.",
@@ -2342,9 +2523,11 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "resources": {
                       "description": "Resources describes the Compute Resources required by this vmi.",
@@ -2382,9 +2565,11 @@
                             "x-kubernetes-int-or-string": true
                           }
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "evictionStrategy": {
                   "description": "EvictionStrategy can be set to \"LiveMigrate\" if the VirtualMachineInstance should be migrated instead of shut-off in case of a node drain.",
@@ -2407,6 +2592,29 @@
                     "null"
                   ],
                   "properties": {
+                    "exec": {
+                      "description": "One and only one of the following should be specified. Exec specifies the action to take, it will be executed on the guest through the qemu-guest-agent. If the guest agent is not available, this probe will fail.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "command": {
+                          "description": "Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.",
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        }
+                      },
+                      "additionalProperties": false
+                    },
                     "failureThreshold": {
                       "description": "Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.",
                       "type": [
@@ -2414,6 +2622,13 @@
                         "null"
                       ],
                       "format": "int32"
+                    },
+                    "guestAgentPing": {
+                      "description": "GuestAgentPing contacts the qemu-guest-agent for availability checks.",
+                      "type": [
+                        "object",
+                        "null"
+                      ]
                     },
                     "httpGet": {
                       "description": "HTTPGet specifies the http request to perform.",
@@ -2457,7 +2672,8 @@
                                 "description": "The header field value",
                                 "type": "string"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "path": {
@@ -2478,7 +2694,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "initialDelaySeconds": {
                       "description": "Number of seconds after the VirtualMachineInstance has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
@@ -2525,17 +2742,19 @@
                           "description": "Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.",
                           "x-kubernetes-int-or-string": true
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "timeoutSeconds": {
-                      "description": "Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
+                      "description": "Number of seconds after which the probe times out. For exec probes the timeout fails the probe but does not terminate the command running on the guest. This means a blocking command can result in an increasing load on the guest. A small buffer will be added to the resulting workload exec probe to compensate for delays caused by the qemu guest exec mechanism. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
                       "type": [
                         "integer",
                         "null"
                       ],
                       "format": "int32"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "networks": {
                   "description": "List of networks that can be attached to a vm's virtual interface.",
@@ -2574,7 +2793,8 @@
                             "description": "References to a NetworkAttachmentDefinition CRD object. Format: <networkName>, <namespace>/<networkName>. If namespace is not specified, VMI namespace is assumed.",
                             "type": "string"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "name": {
                         "description": "Network name. Must be a DNS_LABEL and unique within the vm. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
@@ -2601,9 +2821,11 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
                 },
                 "nodeSelector": {
@@ -2633,6 +2855,29 @@
                     "null"
                   ],
                   "properties": {
+                    "exec": {
+                      "description": "One and only one of the following should be specified. Exec specifies the action to take, it will be executed on the guest through the qemu-guest-agent. If the guest agent is not available, this probe will fail.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "command": {
+                          "description": "Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.",
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        }
+                      },
+                      "additionalProperties": false
+                    },
                     "failureThreshold": {
                       "description": "Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.",
                       "type": [
@@ -2640,6 +2885,13 @@
                         "null"
                       ],
                       "format": "int32"
+                    },
+                    "guestAgentPing": {
+                      "description": "GuestAgentPing contacts the qemu-guest-agent for availability checks.",
+                      "type": [
+                        "object",
+                        "null"
+                      ]
                     },
                     "httpGet": {
                       "description": "HTTPGet specifies the http request to perform.",
@@ -2683,7 +2935,8 @@
                                 "description": "The header field value",
                                 "type": "string"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "path": {
@@ -2704,7 +2957,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "initialDelaySeconds": {
                       "description": "Number of seconds after the VirtualMachineInstance has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
@@ -2751,17 +3005,19 @@
                           "description": "Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.",
                           "x-kubernetes-int-or-string": true
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "timeoutSeconds": {
-                      "description": "Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
+                      "description": "Number of seconds after which the probe times out. For exec probes the timeout fails the probe but does not terminate the command running on the guest. This means a blocking command can result in an increasing load on the guest. A small buffer will be added to the resulting workload exec probe to compensate for delays caused by the qemu guest exec mechanism. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
                       "type": [
                         "integer",
                         "null"
                       ],
                       "format": "int32"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "schedulerName": {
                   "description": "If specified, the VMI will be dispatched by specified scheduler. If not specified, the VMI will be dispatched by default scheduler.",
@@ -2841,7 +3097,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
                 },
                 "volumes": {
@@ -2895,7 +3152,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "secretRef": {
                             "description": "UserDataSecretRef references a k8s secret that contains config drive userdata.",
@@ -2911,7 +3169,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "userData": {
                             "description": "UserData contains config drive inline cloud-init userdata.",
@@ -2927,7 +3186,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "cloudInitNoCloud": {
                         "description": "CloudInitNoCloud represents a cloud-init NoCloud user-data source. The NoCloud data will be added as a disk to the vmi. A proper cloud-init installation is required inside the guest. More info: http://cloudinit.readthedocs.io/en/latest/topics/datasources/nocloud.html",
@@ -2964,7 +3224,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "secretRef": {
                             "description": "UserDataSecretRef references a k8s secret that contains NoCloud userdata.",
@@ -2980,7 +3241,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "userData": {
                             "description": "UserData contains NoCloud inline cloud-init userdata.",
@@ -2996,7 +3258,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "configMap": {
                         "description": "ConfigMapSource represents a reference to a ConfigMap in the same namespace. More info: https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/",
@@ -3026,7 +3289,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "containerDisk": {
                         "description": "ContainerDisk references a docker image, embedding a qcow or raw disk. More info: https://kubevirt.gitbooks.io/user-guide/registry-disk.html",
@@ -3063,7 +3327,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "dataVolume": {
                         "description": "DataVolume represents the dynamic creation a PVC for this volume as well as the process of populating that PVC with a disk image.",
@@ -3079,7 +3344,8 @@
                             "description": "Name represents the name of the DataVolume in the same namespace",
                             "type": "string"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "downwardAPI": {
                         "description": "DownwardAPI represents downward API about the pod that should populate this volume",
@@ -3125,7 +3391,8 @@
                                       "description": "Path of the field to select in the specified API version.",
                                       "type": "string"
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "mode": {
                                   "description": "Optional: mode bits used to set permissions on this file, must be an octal value between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values for mode bits. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
@@ -3165,9 +3432,11 @@
                                       "description": "Required: resource to select",
                                       "type": "string"
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             }
                           },
                           "volumeLabel": {
@@ -3177,7 +3446,15 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
+                      },
+                      "downwardMetrics": {
+                        "description": "DownwardMetrics adds a very small disk to VMIs which contains a limited view of host and guest metrics. The disk content is compatible with vhostmd (https://github.com/vhostmd/vhostmd) and vm-dump-metrics.",
+                        "type": [
+                          "object",
+                          "null"
+                        ]
                       },
                       "emptyDisk": {
                         "description": "EmptyDisk represents a temporary disk which shares the vmis lifecycle. More info: https://kubevirt.gitbooks.io/user-guide/disks-and-volumes.html",
@@ -3194,7 +3471,8 @@
                             "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
                             "x-kubernetes-int-or-string": true
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "ephemeral": {
                         "description": "Ephemeral is a special volume source that \"wraps\" specified source and provides copy-on-write image on top of it.",
@@ -3224,9 +3502,11 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "hostDisk": {
                         "description": "HostDisk represents a disk created on the cluster level",
@@ -3259,7 +3539,8 @@
                             "description": "Contains information if disk.img exists or should be created allowed options are 'Disk' and 'DiskOrCreate'",
                             "type": "string"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "name": {
                         "description": "Volume's name. Must be a DNS_LABEL and unique within the vmi. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
@@ -3286,7 +3567,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "secret": {
                         "description": "SecretVolumeSource represents a reference to a secret data in the same namespace. More info: https://kubernetes.io/docs/concepts/configuration/secret/",
@@ -3316,7 +3598,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "serviceAccount": {
                         "description": "ServiceAccountVolumeSource represents a reference to a service account. There can only be one volume of this type! More info: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/",
@@ -3332,7 +3615,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "sysprep": {
                         "description": "Represents a Sysprep volume source.",
@@ -3355,7 +3639,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "secret": {
                             "description": "Secret references a k8s Secret that contains Sysprep answer file named autounattend.xml that should be attached as disk of CDROM type.",
@@ -3371,18 +3656,24 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
                 }
-              }
+              },
+              "additionalProperties": false
             }
-          }
+          },
+          "additionalProperties": false
         }
-      }
+      },
+      "additionalProperties": false
     },
     "status": {
       "description": "Status holds the current state of the controller and brief information about its associated VirtualMachineInstance",
@@ -3432,13 +3723,21 @@
               "type": {
                 "type": "string"
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "created": {
           "description": "Created indicates if the virtual machine is created in the cluster",
           "type": [
             "boolean",
+            "null"
+          ]
+        },
+        "printableStatus": {
+          "description": "PrintableStatus is a human readable, high-level representation of the status of the virtual machine",
+          "type": [
+            "string",
             "null"
           ]
         },
@@ -3449,12 +3748,22 @@
             "null"
           ]
         },
+        "restoreInProgress": {
+          "description": "RestoreInProgress is the name of the VirtualMachineRestore currently executing",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "snapshotInProgress": {
           "description": "SnapshotInProgress is the name of the VirtualMachineSnapshot currently executing",
           "type": [
             "string",
             "null"
           ]
+        },
+        "startFailure": {
+          "description": "StartFailure tracks consecutive VMI startup failures for the purposes of crash loop backoffs"
         },
         "stateChangeRequests": {
           "description": "StateChangeRequests indicates a list of actions that should be taken on a VMI e.g. stop a specific VMI then start a new one.",
@@ -3495,7 +3804,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "volumeRequests": {
@@ -3553,7 +3863,8 @@
                               "physical": {
                                 "type": "integer"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "matchVolume": {
                             "description": "Represents if a feature is enabled or disabled.",
@@ -3569,9 +3880,11 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "bootOrder": {
                         "description": "BootOrder is an integer value > 0, used to determine ordering of boot devices. Lower values take precedence. Each disk or interface that has a boot order must have a unique value. Disks without a boot order are not tried if a disk with a boot order exists.",
@@ -3615,7 +3928,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "dedicatedIOThread": {
                         "description": "dedicatedIOThread indicates this disk should have an exclusive IO Thread. Enabling this implies useIOThreads = true. Defaults to false.",
@@ -3652,7 +3966,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "floppy": {
                         "description": "Attach a volume as a floppy to the vmi.",
@@ -3675,7 +3990,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "io": {
                         "description": "IO specifies which QEMU disk IO mode should be used. Supported values are: native, default, threads.",
@@ -3705,7 +4021,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "name": {
                         "description": "Name is the device name",
@@ -3725,7 +4042,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "name": {
                     "description": "Name represents the name that will be used to map the disk to the corresponding volume. This overrides any name set inside the Disk struct itself.",
@@ -3749,7 +4067,8 @@
                             "description": "Name represents the name of the DataVolume in the same namespace",
                             "type": "string"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "persistentVolumeClaim": {
                         "description": "PersistentVolumeClaimVolumeSource represents a reference to a PersistentVolumeClaim in the same namespace. Directly attached to the vmi via qemu. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims",
@@ -3772,11 +4091,14 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "removeVolumeOptions": {
                 "description": "RemoveVolumeOptions when set indicates a volume should be removed. The details within this field specify how to add the volume",
@@ -3792,9 +4114,11 @@
                     "description": "Name represents the name that maps to both the disk and volume that should be removed",
                     "type": "string"
                   }
-                }
+                },
+                "additionalProperties": false
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -3829,10 +4153,12 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           }
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -3842,5 +4168,6 @@
       "version": "v1alpha3"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

@@ -63,16 +63,25 @@
                 }
               },
               "volumeMode": {
-                "description": "volumeMode defines what type of volume is required by the claim. Value of Filesystem is implied when not included in claim spec.",
+                "description": "VolumeMode defines what type of volume is required by the claim. Value of Filesystem is implied when not included in claim spec.",
                 "type": [
                   "string",
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           }
+        },
+        "cloneStrategy": {
+          "description": "CloneStrategy defines the preferred method for performing a CDI clone",
+          "type": [
+            "string",
+            "null"
+          ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "status": {
       "description": "StorageProfileStatus provides the most recently observed status of the StorageProfile",
@@ -108,14 +117,22 @@
                 }
               },
               "volumeMode": {
-                "description": "volumeMode defines what type of volume is required by the claim. Value of Filesystem is implied when not included in claim spec.",
+                "description": "VolumeMode defines what type of volume is required by the claim. Value of Filesystem is implied when not included in claim spec.",
                 "type": [
                   "string",
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           }
+        },
+        "cloneStrategy": {
+          "description": "CloneStrategy defines the preferred method for performing a CDI clone",
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "provisioner": {
           "description": "The Storage class provisioner plugin name",
@@ -131,7 +148,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -141,5 +159,6 @@
       "version": "v1beta1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

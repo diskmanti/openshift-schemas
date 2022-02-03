@@ -61,7 +61,8 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "linuxBridge": {
           "description": "LinuxBridge plugin allows users to create a bridge and add the host and the container to it",
@@ -185,7 +186,8 @@
                                             ]
                                           }
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   },
                                   "matchFields": {
@@ -226,17 +228,20 @@
                                             ]
                                           }
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "weight": {
                                 "description": "Weight associated with matching the corresponding nodeSelectorTerm, in the range 1-100.",
                                 "type": "integer",
                                 "format": "int32"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "requiredDuringSchedulingIgnoredDuringExecution": {
@@ -297,7 +302,8 @@
                                             ]
                                           }
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   },
                                   "matchFields": {
@@ -338,15 +344,19 @@
                                             ]
                                           }
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               }
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "podAffinity": {
                       "description": "Describes pod affinity scheduling rules (e.g. co-locate this pod in the same node, zone, etc. as some other pod(s)).",
@@ -424,7 +434,8 @@
                                                 ]
                                               }
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false
                                         }
                                       },
                                       "matchLabels": {
@@ -440,7 +451,8 @@
                                           ]
                                         }
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "namespaces": {
                                     "description": "namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\"",
@@ -459,14 +471,16 @@
                                     "description": "This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed.",
                                     "type": "string"
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "weight": {
                                 "description": "weight associated with matching the corresponding podAffinityTerm, in the range 1-100.",
                                 "type": "integer",
                                 "format": "int32"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "requiredDuringSchedulingIgnoredDuringExecution": {
@@ -530,7 +544,8 @@
                                             ]
                                           }
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   },
                                   "matchLabels": {
@@ -546,7 +561,8 @@
                                       ]
                                     }
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "namespaces": {
                                 "description": "namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\"",
@@ -565,10 +581,12 @@
                                 "description": "This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed.",
                                 "type": "string"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "podAntiAffinity": {
                       "description": "Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod in the same node, zone, etc. as some other pod(s)).",
@@ -646,7 +664,8 @@
                                                 ]
                                               }
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false
                                         }
                                       },
                                       "matchLabels": {
@@ -662,7 +681,8 @@
                                           ]
                                         }
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "namespaces": {
                                     "description": "namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\"",
@@ -681,14 +701,16 @@
                                     "description": "This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed.",
                                     "type": "string"
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "weight": {
                                 "description": "weight associated with matching the corresponding podAffinityTerm, in the range 1-100.",
                                 "type": "integer",
                                 "format": "int32"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "requiredDuringSchedulingIgnoredDuringExecution": {
@@ -752,7 +774,8 @@
                                             ]
                                           }
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   },
                                   "matchLabels": {
@@ -768,7 +791,8 @@
                                       ]
                                     }
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "namespaces": {
                                 "description": "namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\"",
@@ -787,12 +811,15 @@
                                 "description": "This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed.",
                                 "type": "string"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "nodeSelector": {
                   "type": [
@@ -854,10 +881,12 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "workloads": {
               "type": [
@@ -938,7 +967,8 @@
                                             ]
                                           }
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   },
                                   "matchFields": {
@@ -979,17 +1009,20 @@
                                             ]
                                           }
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "weight": {
                                 "description": "Weight associated with matching the corresponding nodeSelectorTerm, in the range 1-100.",
                                 "type": "integer",
                                 "format": "int32"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "requiredDuringSchedulingIgnoredDuringExecution": {
@@ -1050,7 +1083,8 @@
                                             ]
                                           }
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   },
                                   "matchFields": {
@@ -1091,15 +1125,19 @@
                                             ]
                                           }
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               }
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "podAffinity": {
                       "description": "Describes pod affinity scheduling rules (e.g. co-locate this pod in the same node, zone, etc. as some other pod(s)).",
@@ -1177,7 +1215,8 @@
                                                 ]
                                               }
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false
                                         }
                                       },
                                       "matchLabels": {
@@ -1193,7 +1232,8 @@
                                           ]
                                         }
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "namespaces": {
                                     "description": "namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\"",
@@ -1212,14 +1252,16 @@
                                     "description": "This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed.",
                                     "type": "string"
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "weight": {
                                 "description": "weight associated with matching the corresponding podAffinityTerm, in the range 1-100.",
                                 "type": "integer",
                                 "format": "int32"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "requiredDuringSchedulingIgnoredDuringExecution": {
@@ -1283,7 +1325,8 @@
                                             ]
                                           }
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   },
                                   "matchLabels": {
@@ -1299,7 +1342,8 @@
                                       ]
                                     }
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "namespaces": {
                                 "description": "namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\"",
@@ -1318,10 +1362,12 @@
                                 "description": "This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed.",
                                 "type": "string"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "podAntiAffinity": {
                       "description": "Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod in the same node, zone, etc. as some other pod(s)).",
@@ -1399,7 +1445,8 @@
                                                 ]
                                               }
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false
                                         }
                                       },
                                       "matchLabels": {
@@ -1415,7 +1462,8 @@
                                           ]
                                         }
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "namespaces": {
                                     "description": "namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\"",
@@ -1434,14 +1482,16 @@
                                     "description": "This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed.",
                                     "type": "string"
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "weight": {
                                 "description": "weight associated with matching the corresponding podAffinityTerm, in the range 1-100.",
                                 "type": "integer",
                                 "format": "int32"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "requiredDuringSchedulingIgnoredDuringExecution": {
@@ -1505,7 +1555,8 @@
                                             ]
                                           }
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   },
                                   "matchLabels": {
@@ -1521,7 +1572,8 @@
                                       ]
                                     }
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "namespaces": {
                                 "description": "namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\"",
@@ -1540,12 +1592,15 @@
                                 "description": "This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed.",
                                 "type": "string"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "nodeSelector": {
                   "type": [
@@ -1607,12 +1662,15 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
                 }
-              }
+              },
+              "additionalProperties": false
             }
-          }
+          },
+          "additionalProperties": false
         },
         "selfSignConfiguration": {
           "description": "SelfSignConfiguration defines self sign configuration",
@@ -1649,9 +1707,11 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         }
-      }
+      },
+      "additionalProperties": false
     },
     "status": {
       "description": "NetworkAddonsConfigStatus defines the observed state of NetworkAddonsConfig",
@@ -1701,7 +1761,8 @@
                 "description": "ConditionType is the state of the operator's reconciliation functionality.",
                 "type": "string"
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "containers": {
@@ -1733,7 +1794,8 @@
               "parentName": {
                 "type": "string"
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "observedVersion": {
@@ -1754,7 +1816,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -1764,5 +1827,6 @@
       "version": "v1alpha1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

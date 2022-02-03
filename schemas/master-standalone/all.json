@@ -1,6 +1,12 @@
 {
   "oneOf": [
     {
+      "$ref": "_definitions.json#/definitions/backube.snapscheduler.v1.SnapshotSchedule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/backube.snapscheduler.v1.SnapshotScheduleList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.Alertmanager"
     },
     {
@@ -736,42 +742,6 @@
       "$ref": "_definitions.json#/definitions/io.cert-manager.acme.v1.OrderList"
     },
     {
-      "$ref": "_definitions.json#/definitions/io.cert-manager.acme.v1alpha2.Challenge"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.cert-manager.acme.v1alpha2.ChallengeList"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.cert-manager.acme.v1alpha2.Order"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.cert-manager.acme.v1alpha2.OrderList"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.cert-manager.acme.v1alpha3.Challenge"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.cert-manager.acme.v1alpha3.ChallengeList"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.cert-manager.acme.v1alpha3.Order"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.cert-manager.acme.v1alpha3.OrderList"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.cert-manager.acme.v1beta1.Challenge"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.cert-manager.acme.v1beta1.ChallengeList"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.cert-manager.acme.v1beta1.Order"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.cert-manager.acme.v1beta1.OrderList"
-    },
-    {
       "$ref": "_definitions.json#/definitions/io.cert-manager.v1.Certificate"
     },
     {
@@ -796,78 +766,6 @@
       "$ref": "_definitions.json#/definitions/io.cert-manager.v1.IssuerList"
     },
     {
-      "$ref": "_definitions.json#/definitions/io.cert-manager.v1alpha2.Certificate"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.cert-manager.v1alpha2.CertificateList"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.cert-manager.v1alpha2.CertificateRequest"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.cert-manager.v1alpha2.CertificateRequestList"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.cert-manager.v1alpha2.ClusterIssuer"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.cert-manager.v1alpha2.ClusterIssuerList"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.cert-manager.v1alpha2.Issuer"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.cert-manager.v1alpha2.IssuerList"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.cert-manager.v1alpha3.Certificate"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.cert-manager.v1alpha3.CertificateList"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.cert-manager.v1alpha3.CertificateRequest"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.cert-manager.v1alpha3.CertificateRequestList"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.cert-manager.v1alpha3.ClusterIssuer"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.cert-manager.v1alpha3.ClusterIssuerList"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.cert-manager.v1alpha3.Issuer"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.cert-manager.v1alpha3.IssuerList"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.cert-manager.v1beta1.Certificate"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.cert-manager.v1beta1.CertificateList"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.cert-manager.v1beta1.CertificateRequest"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.cert-manager.v1beta1.CertificateRequestList"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.cert-manager.v1beta1.ClusterIssuer"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.cert-manager.v1beta1.ClusterIssuerList"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.cert-manager.v1beta1.Issuer"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.cert-manager.v1beta1.IssuerList"
-    },
-    {
       "$ref": "_definitions.json#/definitions/io.cncf.cni.k8s.v1.NetworkAttachmentDefinition"
     },
     {
@@ -884,6 +782,42 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.cncf.cni.whereabouts.v1alpha1.OverlappingRangeIPReservationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.devfile.controller.v1alpha1.DevWorkspaceOperatorConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.devfile.controller.v1alpha1.DevWorkspaceOperatorConfigList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.devfile.controller.v1alpha1.DevWorkspaceRouting"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.devfile.controller.v1alpha1.DevWorkspaceRoutingList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.devfile.workspace.v1alpha1.DevWorkspace"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.devfile.workspace.v1alpha1.DevWorkspaceList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.devfile.workspace.v1alpha1.DevWorkspaceTemplate"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.devfile.workspace.v1alpha1.DevWorkspaceTemplateList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.devfile.workspace.v1alpha2.DevWorkspace"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.devfile.workspace.v1alpha2.DevWorkspaceList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.devfile.workspace.v1alpha2.DevWorkspaceTemplate"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.devfile.workspace.v1alpha2.DevWorkspaceTemplateList"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.admissionregistration.v1.MutatingWebhook"
@@ -1351,9 +1285,6 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ConfigMapKeySelector"
     },
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ConfigMapKeySelector_v2"
-    },
-    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ConfigMapList"
     },
     {
@@ -1388,9 +1319,6 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ContainerStatus"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Container_v2"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.DaemonEndpoint"
@@ -1432,13 +1360,7 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EnvVarSource"
     },
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EnvVar_v2"
-    },
-    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EphemeralContainer"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EphemeralContainer_v2"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EphemeralVolumeSource"
@@ -1531,9 +1453,6 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.LocalObjectReference"
     },
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.LocalObjectReference_v2"
-    },
-    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.LocalVolumeSource"
     },
     {
@@ -1588,12 +1507,6 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeSelectorTerm"
     },
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeSelectorTerm_v2"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeSelector_v2"
-    },
-    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeSpec"
     },
     {
@@ -1604,9 +1517,6 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ObjectFieldSelector"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ObjectFieldSelector_v2"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference"
@@ -1628,9 +1538,6 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PersistentVolumeClaimSpec"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PersistentVolumeClaimSpec_v2"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PersistentVolumeClaimStatus"
@@ -1663,9 +1570,6 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodAffinityTerm"
     },
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodAffinityTerm_v2"
-    },
-    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodAntiAffinity"
     },
     {
@@ -1693,9 +1597,6 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodSpec"
     },
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodSpec_v2"
-    },
-    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodStatus"
     },
     {
@@ -1718,9 +1619,6 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Probe"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Probe_v2"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ProjectedVolumeSource"
@@ -1753,9 +1651,6 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ResourceFieldSelector"
     },
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ResourceFieldSelector_v2"
-    },
-    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ResourceQuota"
     },
     {
@@ -1783,9 +1678,6 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ScopeSelector"
     },
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ScopeSelector_v2"
-    },
-    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ScopedResourceSelectorRequirement"
     },
     {
@@ -1799,9 +1691,6 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector_v2"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretList"
@@ -1876,9 +1765,6 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.TypedLocalObjectReference"
     },
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.TypedLocalObjectReference_v2"
-    },
-    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Volume"
     },
     {
@@ -1901,9 +1787,6 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.WindowsSecurityContextOptions"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.WindowsSecurityContextOptions_v2"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.discovery.v1.Endpoint"
@@ -2566,6 +2449,246 @@
       "$ref": "_definitions.json#/definitions/io.kubernetes-client.v1.ExternalSecretList"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.cdi.v1alpha1.CDI"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.cdi.v1alpha1.CDIConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.cdi.v1alpha1.CDIConfigList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.cdi.v1alpha1.CDIList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.cdi.v1alpha1.DataVolume"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.cdi.v1alpha1.DataVolumeList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.cdi.v1beta1.CDI"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.cdi.v1beta1.CDIConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.cdi.v1beta1.CDIConfigList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.cdi.v1beta1.CDIList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.cdi.v1beta1.DataImportCron"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.cdi.v1beta1.DataImportCronList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.cdi.v1beta1.DataSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.cdi.v1beta1.DataSourceList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.cdi.v1beta1.DataVolume"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.cdi.v1beta1.DataVolumeList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.cdi.v1beta1.ObjectTransfer"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.cdi.v1beta1.ObjectTransferList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.cdi.v1beta1.StorageProfile"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.cdi.v1beta1.StorageProfileList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.hco.v1beta1.HyperConverged"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.hco.v1beta1.HyperConvergedList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.hostpathprovisioner.v1alpha1.HostPathProvisioner"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.hostpathprovisioner.v1alpha1.HostPathProvisionerList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.hostpathprovisioner.v1beta1.HostPathProvisioner"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.hostpathprovisioner.v1beta1.HostPathProvisionerList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.network.networkaddonsoperator.v1.NetworkAddonsConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.network.networkaddonsoperator.v1.NetworkAddonsConfigList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.network.networkaddonsoperator.v1alpha1.NetworkAddonsConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.network.networkaddonsoperator.v1alpha1.NetworkAddonsConfigList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.nodemaintenance.v1beta1.NodeMaintenance"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.nodemaintenance.v1beta1.NodeMaintenanceList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.snapshot.v1alpha1.VirtualMachineRestore"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.snapshot.v1alpha1.VirtualMachineRestoreList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.snapshot.v1alpha1.VirtualMachineSnapshot"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.snapshot.v1alpha1.VirtualMachineSnapshotContent"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.snapshot.v1alpha1.VirtualMachineSnapshotContentList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.snapshot.v1alpha1.VirtualMachineSnapshotList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.ssp.v1beta1.SSP"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.ssp.v1beta1.SSPList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v1.KubeVirt"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v1.KubeVirtList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v1.VirtualMachine"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v1.VirtualMachineInstance"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v1.VirtualMachineInstanceList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v1.VirtualMachineInstanceMigration"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v1.VirtualMachineInstanceMigrationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v1.VirtualMachineInstancePreset"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v1.VirtualMachineInstancePresetList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v1.VirtualMachineInstanceReplicaSet"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v1.VirtualMachineInstanceReplicaSetList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v1.VirtualMachineList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v1alpha3.KubeVirt"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v1alpha3.KubeVirtList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v1alpha3.VirtualMachine"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v1alpha3.VirtualMachineInstance"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v1alpha3.VirtualMachineInstanceList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v1alpha3.VirtualMachineInstanceMigration"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v1alpha3.VirtualMachineInstanceMigrationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v1alpha3.VirtualMachineInstancePreset"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v1alpha3.VirtualMachineInstancePresetList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v1alpha3.VirtualMachineInstanceReplicaSet"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v1alpha3.VirtualMachineInstanceReplicaSetList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v1alpha3.VirtualMachineList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v2v.v1alpha1.OVirtProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v2v.v1alpha1.OVirtProviderList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v2v.v1alpha1.ResourceMapping"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v2v.v1alpha1.ResourceMappingList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v2v.v1alpha1.V2VVmware"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v2v.v1alpha1.V2VVmwareList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v2v.v1alpha1.VMImportConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v2v.v1alpha1.VMImportConfigList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v2v.v1alpha1.VirtualMachineImport"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v2v.v1alpha1.VirtualMachineImportList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v2v.v1beta1.ResourceMapping"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v2v.v1beta1.ResourceMappingList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v2v.v1beta1.VMImportConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v2v.v1beta1.VMImportConfigList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v2v.v1beta1.VirtualMachineImport"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kubevirt.v2v.v1beta1.VirtualMachineImportList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.metal3.v1alpha1.BareMetalHost"
     },
     {
@@ -2950,6 +3073,12 @@
       "$ref": "_definitions.json#/definitions/io.openshift.internal.security.v1.RangeAllocationList"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.openshift.koku-metrics-cfg.v1beta1.KokuMetricsConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.koku-metrics-cfg.v1beta1.KokuMetricsConfigList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.openshift.machine.v1beta1.Machine"
     },
     {
@@ -3296,6 +3425,27 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.rook.ceph.v1.CephRBDMirrorList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/k8s.io.api.core.v1.PersistentVolumeClaimVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/k8s.io.apimachinery.pkg.apis.meta.v1.APIGroup"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/k8s.io.apimachinery.pkg.apis.meta.v1.APIResource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/k8s.io.apimachinery.pkg.apis.meta.v1.APIResourceList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/k8s.io.apimachinery.pkg.apis.meta.v1.GroupVersionForDiscovery"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/k8s.io.apimachinery.pkg.apis.meta.v1.ServerAddressByClientCIDR"
     }
   ]
 }

@@ -42,7 +42,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "status": {
       "description": "VirtualMachineInstanceMigration reprents information pertaining to a VMI's migration.",
@@ -90,7 +91,8 @@
               "type": {
                 "type": "string"
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "phase": {
@@ -100,7 +102,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -110,5 +113,6 @@
       "version": "v1alpha3"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

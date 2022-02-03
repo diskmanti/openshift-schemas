@@ -78,7 +78,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "target": {
                     "description": "ObjectIdentifier defines how a resource should be identified on kubevirt",
@@ -96,7 +97,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "type": {
                     "type": [
@@ -110,7 +112,8 @@
                       "null"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               }
             },
             "networkMappings": {
@@ -146,7 +149,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "target": {
                     "description": "ObjectIdentifier defines how a resource should be identified on kubevirt",
@@ -164,7 +168,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "type": {
                     "type": [
@@ -172,7 +177,8 @@
                       "null"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               }
             },
             "storageMappings": {
@@ -214,7 +220,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "target": {
                     "description": "ObjectIdentifier defines how a resource should be identified on kubevirt",
@@ -232,7 +239,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "type": {
                     "type": [
@@ -246,10 +254,12 @@
                       "null"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               }
             }
-          }
+          },
+          "additionalProperties": false
         },
         "vmware": {
           "description": "VmwareMappings defines the mappings of vmware resources to kubevirt",
@@ -297,7 +307,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "target": {
                     "description": "ObjectIdentifier defines how a resource should be identified on kubevirt",
@@ -315,7 +326,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "type": {
                     "type": [
@@ -329,7 +341,8 @@
                       "null"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               }
             },
             "networkMappings": {
@@ -365,7 +378,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "target": {
                     "description": "ObjectIdentifier defines how a resource should be identified on kubevirt",
@@ -383,7 +397,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "type": {
                     "type": [
@@ -391,7 +406,8 @@
                       "null"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               }
             },
             "storageMappings": {
@@ -433,7 +449,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "target": {
                     "description": "ObjectIdentifier defines how a resource should be identified on kubevirt",
@@ -451,7 +468,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "type": {
                     "type": [
@@ -465,12 +483,15 @@
                       "null"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               }
             }
-          }
+          },
+          "additionalProperties": false
         }
-      }
+      },
+      "additionalProperties": false
     },
     "status": {
       "description": "ResourceMappingStatus defines the observed state of ResourceMapping",
@@ -487,5 +508,6 @@
       "version": "v1beta1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

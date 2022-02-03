@@ -1,5 +1,5 @@
 {
-  "description": "BuildRequest is the resource used to pass parameters to build generator",
+  "description": "BuildRequest is the resource used to pass parameters to build generator\n\nCompatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
   "type": "object",
   "properties": {
     "apiVersion": {
@@ -28,12 +28,12 @@
         "null"
       ],
       "items": {
-        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EnvVar_v2"
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EnvVar"
       }
     },
     "from": {
       "description": "from is the reference to the ImageStreamTag that triggered the build.",
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference_v2"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference"
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
@@ -76,7 +76,7 @@
     },
     "triggeredByImage": {
       "description": "triggeredByImage is the Image that triggered this build.",
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference_v2"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference"
     }
   },
   "x-kubernetes-group-version-kind": [

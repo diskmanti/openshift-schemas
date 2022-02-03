@@ -83,7 +83,8 @@
                     "null"
                   ]
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "clock": {
               "description": "Clock sets the clock and timers of the vmi.",
@@ -120,7 +121,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "hyperv": {
                       "description": "Hyperv (Hypervclock) - lets guests read the host\u2019s wall clock time (paravirtualized). For windows guests.",
@@ -136,7 +138,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "kvm": {
                       "description": "KVM \t(KVM clock) - lets guests read the host\u2019s wall clock time (paravirtualized). For linux guests.",
@@ -152,7 +155,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "pit": {
                       "description": "PIT (Programmable Interval Timer) - a timer with periodic interrupts.",
@@ -175,7 +179,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "rtc": {
                       "description": "RTC (Real Time Clock) - a continuously running timer with periodic interrupts.",
@@ -205,9 +210,11 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "timezone": {
                   "description": "Timezone sets the guest clock to the specified timezone. Zone name follows the TZ environment variable format (e.g. 'America/New_York').",
@@ -230,9 +237,11 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "cpu": {
               "description": "CPU allow specified the detailed CPU topology inside the vmi.",
@@ -283,7 +292,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
                 },
                 "isolateEmulatorThread": {
@@ -299,6 +309,23 @@
                     "string",
                     "null"
                   ]
+                },
+                "numa": {
+                  "description": "NUMA allows specifying settings for the guest NUMA topology",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "guestMappingPassthrough": {
+                      "description": "GuestMappingPassthrough will create an efficient guest topology based on host CPUs exclusively assigned to a pod. The created topology ensures that memory and CPUs on the virtual numa nodes never cross boundaries of host numa nodes.",
+                      "type": [
+                        "object",
+                        "null"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
                 },
                 "sockets": {
                   "description": "Sockets specifies the number of sockets inside the vmi. Must be a value greater or equal 1.",
@@ -316,7 +343,8 @@
                   ],
                   "format": "int32"
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "devices": {
               "description": "Devices allows adding disks, network interfaces, and others",
@@ -354,6 +382,13 @@
                   "description": "Whether or not to enable virtio multi-queue for block devices. Defaults to false.",
                   "type": [
                     "boolean",
+                    "null"
+                  ]
+                },
+                "clientPassthrough": {
+                  "description": "To configure and access client devices such as redirecting USB",
+                  "type": [
+                    "object",
                     "null"
                   ]
                 },
@@ -403,7 +438,8 @@
                               "physical": {
                                 "type": "integer"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "matchVolume": {
                             "description": "Represents if a feature is enabled or disabled.",
@@ -419,9 +455,11 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "bootOrder": {
                         "description": "BootOrder is an integer value > 0, used to determine ordering of boot devices. Lower values take precedence. Each disk or interface that has a boot order must have a unique value. Disks without a boot order are not tried if a disk with a boot order exists.",
@@ -465,7 +503,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "dedicatedIOThread": {
                         "description": "dedicatedIOThread indicates this disk should have an exclusive IO Thread. Enabling this implies useIOThreads = true. Defaults to false.",
@@ -502,7 +541,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "floppy": {
                         "description": "Attach a volume as a floppy to the vmi.",
@@ -525,7 +565,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "io": {
                         "description": "IO specifies which QEMU disk IO mode should be used. Supported values are: native, default, threads.",
@@ -555,7 +596,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "name": {
                         "description": "Name is the device name",
@@ -575,7 +617,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
                 },
                 "filesystems": {
@@ -602,7 +645,8 @@
                         "description": "Virtiofs is supported",
                         "type": "object"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "x-kubernetes-list-type": "atomic"
                 },
@@ -629,7 +673,8 @@
                         "description": "Name of the GPU device as exposed by a device plugin",
                         "type": "string"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "x-kubernetes-list-type": "atomic"
                 },
@@ -656,7 +701,8 @@
                       "name": {
                         "type": "string"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "x-kubernetes-list-type": "atomic"
                 },
@@ -691,7 +737,8 @@
                         "description": "Type indicated the type of input device. Supported values: tablet.",
                         "type": "string"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
                 },
                 "interfaces": {
@@ -774,7 +821,8 @@
                                   "description": "Value is a String value for the Option provided Required.",
                                   "type": "string"
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             }
                           },
                           "tftpServerName": {
@@ -784,7 +832,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "macAddress": {
                         "description": "Interface MAC address. For example: de:ad:00:00:be:af or DE-AD-00-00-BE-AF.",
@@ -858,7 +907,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
                       },
                       "slirp": {
@@ -880,7 +930,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
                 },
                 "networkInterfaceMultiqueue": {
@@ -928,15 +979,18 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "name": {
                       "description": "Name of the watchdog.",
                       "type": "string"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "features": {
               "description": "Features like acpi, apic, hyperv, smm.",
@@ -959,7 +1013,8 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "apic": {
                   "description": "Defaults to the machine type setting.",
@@ -982,7 +1037,8 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "hyperv": {
                   "description": "Defaults to the machine type setting.",
@@ -1005,7 +1061,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "frequencies": {
                       "description": "Frequencies improves the TSC clock source handling for Hyper-V on KVM. Defaults to the machine type setting.",
@@ -1021,7 +1078,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "ipi": {
                       "description": "IPI improves performances in overcommited environments. Requires vpindex. Defaults to the machine type setting.",
@@ -1037,7 +1095,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "reenlightenment": {
                       "description": "Reenlightenment enables the notifications on TSC frequency changes. Defaults to the machine type setting.",
@@ -1053,7 +1112,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "relaxed": {
                       "description": "Relaxed instructs the guest OS to disable watchdog timeouts. Defaults to the machine type setting.",
@@ -1069,7 +1129,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "reset": {
                       "description": "Reset enables Hyperv reboot/reset for the vmi. Requires synic. Defaults to the machine type setting.",
@@ -1085,7 +1146,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "runtime": {
                       "description": "Runtime improves the time accounting to improve scheduling in the guest. Defaults to the machine type setting.",
@@ -1101,7 +1163,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "spinlocks": {
                       "description": "Spinlocks allows to configure the spinlock retry attempts.",
@@ -1125,7 +1188,8 @@
                           ],
                           "format": "int32"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "synic": {
                       "description": "SyNIC enables the Synthetic Interrupt Controller. Defaults to the machine type setting.",
@@ -1141,7 +1205,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "synictimer": {
                       "description": "SyNICTimer enables Synthetic Interrupt Controller Timers, reducing CPU load. Defaults to the machine type setting.",
@@ -1164,7 +1229,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "enabled": {
                           "type": [
@@ -1172,7 +1238,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "tlbflush": {
                       "description": "TLBFlush improves performances in overcommited environments. Requires vpindex. Defaults to the machine type setting.",
@@ -1188,7 +1255,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "vapic": {
                       "description": "VAPIC improves the paravirtualized handling of interrupts. Defaults to the machine type setting.",
@@ -1204,7 +1272,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "vendorid": {
                       "description": "VendorID allows setting the hypervisor vendor id. Defaults to the machine type setting.",
@@ -1227,7 +1296,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "vpindex": {
                       "description": "VPIndex enables the Virtual Processor Index to help windows identifying virtual processors. Defaults to the machine type setting.",
@@ -1243,9 +1313,11 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "kvm": {
                   "description": "Configure how KVM presence is exposed to the guest.",
@@ -1261,7 +1333,8 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "pvspinlock": {
                   "description": "Notify the guest that the host supports paravirtual spinlocks. For older kernels this feature should be explicitly disabled.",
@@ -1277,7 +1350,8 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "smm": {
                   "description": "SMM enables/disables System Management Mode. TSEG not yet implemented.",
@@ -1293,9 +1367,11 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "firmware": {
               "description": "Firmware.",
@@ -1325,7 +1401,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "efi": {
                       "description": "If set, EFI will be used instead of BIOS.",
@@ -1341,9 +1418,73 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
-                  }
+                  },
+                  "additionalProperties": false
+                },
+                "kernelBoot": {
+                  "description": "Settings to set the kernel for booting.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "container": {
+                      "description": "Container defines the container that containes kernel artifacts",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "required": [
+                        "image"
+                      ],
+                      "properties": {
+                        "image": {
+                          "description": "Image that container initrd / kernel files.",
+                          "type": "string"
+                        },
+                        "imagePullPolicy": {
+                          "description": "Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "imagePullSecret": {
+                          "description": "ImagePullSecret is the name of the Docker registry secret required to pull the image. The secret must already exist.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "initrdPath": {
+                          "description": "the fully-qualified path to the ramdisk image in the host OS",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "kernelPath": {
+                          "description": "The fully-qualified path to the kernel image in the host OS",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "kernelArgs": {
+                      "description": "Arguments to be passed to the kernel at boot time",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
                 },
                 "serial": {
                   "description": "The system-serial-number in SMBIOS",
@@ -1359,7 +1500,8 @@
                     "null"
                   ]
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "ioThreadsPolicy": {
               "description": "Controls whether or not disks will share IOThreads. Omitting IOThreadsPolicy disables use of IOThreads. One of: shared, auto",
@@ -1374,15 +1516,16 @@
                 "object",
                 "null"
               ],
-              "required": [
-                "type"
-              ],
               "properties": {
                 "type": {
                   "description": "QEMU machine type is the actual chipset of the VirtualMachineInstance.",
-                  "type": "string"
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "memory": {
               "description": "Memory allow specifying the VMI memory features.",
@@ -1410,9 +1553,11 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "resources": {
               "description": "Resources describes the Compute Resources required by this vmi.",
@@ -1450,9 +1595,11 @@
                     "x-kubernetes-int-or-string": true
                   }
                 }
-              }
+              },
+              "additionalProperties": false
             }
-          }
+          },
+          "additionalProperties": false
         },
         "selector": {
           "description": "Selector is a label query over a set of VMIs. Required.",
@@ -1496,7 +1643,8 @@
                       ]
                     }
                   }
-                }
+                },
+                "additionalProperties": false
               }
             },
             "matchLabels": {
@@ -1512,9 +1660,11 @@
                 ]
               }
             }
-          }
+          },
+          "additionalProperties": false
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -1524,5 +1674,6 @@
       "version": "v1alpha3"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

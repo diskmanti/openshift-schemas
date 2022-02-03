@@ -62,7 +62,8 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "resourceMapping": {
           "description": "ObjectIdentifier defines how a resource should be identified",
@@ -85,7 +86,8 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "source": {
           "description": "VirtualMachineImportSourceSpec defines the source provider and the internal mapping resources",
@@ -146,7 +148,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "target": {
                             "description": "ObjectIdentifier defines how a resource should be identified on kubevirt",
@@ -167,7 +170,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "type": {
                             "type": [
@@ -181,7 +185,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "networkMappings": {
@@ -216,7 +221,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "target": {
                             "description": "ObjectIdentifier defines how a resource should be identified on kubevirt",
@@ -237,7 +243,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "type": {
                             "type": [
@@ -245,7 +252,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "storageMappings": {
@@ -286,7 +294,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "target": {
                             "description": "ObjectIdentifier defines how a resource should be identified on kubevirt",
@@ -307,7 +316,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "type": {
                             "type": [
@@ -321,10 +331,12 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "vm": {
                   "description": "VirtualMachineImportOvirtSourceVMSpec defines the definition of the VM info in oVirt",
@@ -351,7 +363,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "id": {
                       "description": "id defines the id of the source VM",
@@ -367,9 +380,11 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "vmware": {
               "description": "VirtualMachineImportVmwareSourceSpec defines the mapping resources and the VM identity for vmware source provider",
@@ -426,7 +441,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "target": {
                             "description": "ObjectIdentifier defines how a resource should be identified on kubevirt",
@@ -447,7 +463,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "type": {
                             "type": [
@@ -461,7 +478,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "networkMappings": {
@@ -496,7 +514,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "target": {
                             "description": "ObjectIdentifier defines how a resource should be identified on kubevirt",
@@ -517,7 +536,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "type": {
                             "type": [
@@ -525,7 +545,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "storageMappings": {
@@ -566,7 +587,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "target": {
                             "description": "ObjectIdentifier defines how a resource should be identified on kubevirt",
@@ -587,7 +609,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "type": {
                             "type": [
@@ -601,10 +624,12 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "vm": {
                   "description": "VirtualMachineImportVmwareSourceVMSpec defines how to identify the VM in vCenter",
@@ -622,11 +647,14 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
-              }
+              },
+              "additionalProperties": false
             }
-          }
+          },
+          "additionalProperties": false
         },
         "startVm": {
           "description": "If true imported virtual machine will be started",
@@ -650,7 +678,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "status": {
       "description": "VirtualMachineImportStatus defines the observed state of VirtualMachineImport",
@@ -713,7 +742,8 @@
                 "description": "Type of virtual machine import condition",
                 "type": "string"
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "dataVolumes": {
@@ -735,7 +765,8 @@
                 "description": "Name of the DataVolume that was created by virtual machine import",
                 "type": "string"
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "targetVmName": {
@@ -788,9 +819,11 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -800,5 +833,6 @@
       "version": "v1beta1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

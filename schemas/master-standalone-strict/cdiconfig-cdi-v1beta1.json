@@ -79,7 +79,8 @@
                 "pattern": "^(0(?:\\.\\d{1,3})?|1)$"
               }
             }
-          }
+          },
+          "additionalProperties": false
         },
         "importProxy": {
           "description": "ImportProxy contains importer pod proxy configuration.",
@@ -116,7 +117,8 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "insecureRegistries": {
           "description": "InsecureRegistries is a list of TLS disabled registries",
@@ -160,7 +162,8 @@
                 "x-kubernetes-int-or-string": true
               }
             }
-          }
+          },
+          "additionalProperties": false
         },
         "preallocation": {
           "description": "Preallocation controls whether storage for DataVolumes should be allocated in advance.",
@@ -183,7 +186,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "status": {
       "description": "CDIConfigStatus provides the most recently observed status of the CDI Config resource",
@@ -221,7 +225,8 @@
                 "x-kubernetes-int-or-string": true
               }
             }
-          }
+          },
+          "additionalProperties": false
         },
         "filesystemOverhead": {
           "description": "FilesystemOverhead describes the space reserved for overhead when using Filesystem volumes. A percentage value is between 0 and 1",
@@ -253,7 +258,8 @@
                 "pattern": "^(0(?:\\.\\d{1,3})?|1)$"
               }
             }
-          }
+          },
+          "additionalProperties": false
         },
         "importProxy": {
           "description": "ImportProxy contains importer pod proxy configuration.",
@@ -290,7 +296,8 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "preallocation": {
           "description": "Preallocation controls whether storage for DataVolumes should be allocated in advance.",
@@ -313,7 +320,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -323,5 +331,6 @@
       "version": "v1beta1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

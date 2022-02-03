@@ -84,7 +84,8 @@
                       "null"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "detailRequest": {
                 "type": [
@@ -95,10 +96,12 @@
               "name": {
                 "type": "string"
               }
-            }
+            },
+            "additionalProperties": false
           }
         }
-      }
+      },
+      "additionalProperties": false
     },
     "status": {
       "description": "V2VVmwareStatus defines the observed state of V2VVmware",
@@ -113,7 +116,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -123,5 +127,6 @@
       "version": "v1alpha1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

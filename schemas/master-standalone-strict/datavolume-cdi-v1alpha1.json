@@ -64,7 +64,8 @@
                 "description": "Previous is the identifier of the snapshot from the previous checkpoint.",
                 "type": "string"
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "contentType": {
@@ -145,7 +146,8 @@
                   "description": "Name is the name of resource being referenced",
                   "type": "string"
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "resources": {
               "description": "Resources represents the minimum resources the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources",
@@ -176,7 +178,8 @@
                     "x-kubernetes-int-or-string": true
                   }
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "selector": {
               "description": "A label query over volumes to consider for binding.",
@@ -223,7 +226,8 @@
                           ]
                         }
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
                 },
                 "matchLabels": {
@@ -239,7 +243,8 @@
                     ]
                   }
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "storageClassName": {
               "description": "Name of the StorageClass required by the claim. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1",
@@ -262,7 +267,8 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "source": {
           "description": "Source is the src of the data for the requested DataVolume",
@@ -303,7 +309,8 @@
                   "description": "URL is the URL of the http(s) endpoint",
                   "type": "string"
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "imageio": {
               "description": "DataVolumeSourceImageIO provides the parameters to create a Data Volume from an imageio source",
@@ -338,7 +345,8 @@
                   "description": "URL is the URL of the ovirt-engine",
                   "type": "string"
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "pvc": {
               "description": "DataVolumeSourcePVC provides the parameters to create a Data Volume from an existing PVC",
@@ -359,7 +367,8 @@
                   "description": "The namespace of the source PVC",
                   "type": "string"
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "registry": {
               "description": "DataVolumeSourceRegistry provides the parameters to create a Data Volume from an registry source",
@@ -389,7 +398,8 @@
                   "description": "URL is the url of the Docker registry source",
                   "type": "string"
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "s3": {
               "description": "DataVolumeSourceS3 provides the parameters to create a Data Volume from an S3 source",
@@ -419,7 +429,8 @@
                   "description": "URL is the url of the S3 source",
                   "type": "string"
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "upload": {
               "description": "DataVolumeSourceUpload provides the parameters to create a Data Volume by uploading the source",
@@ -470,9 +481,11 @@
                     "null"
                   ]
                 }
-              }
+              },
+              "additionalProperties": false
             }
-          }
+          },
+          "additionalProperties": false
         },
         "storage": {
           "description": "Storage is the requested storage specification",
@@ -520,7 +533,8 @@
                   "description": "Name is the name of resource being referenced",
                   "type": "string"
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "resources": {
               "description": "Resources represents the minimum resources the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources",
@@ -551,7 +565,8 @@
                     "x-kubernetes-int-or-string": true
                   }
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "selector": {
               "description": "A label query over volumes to consider for binding.",
@@ -598,7 +613,8 @@
                           ]
                         }
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
                 },
                 "matchLabels": {
@@ -614,7 +630,8 @@
                     ]
                   }
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "storageClassName": {
               "description": "Name of the StorageClass required by the claim. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1",
@@ -637,9 +654,11 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         }
-      }
+      },
+      "additionalProperties": false
     },
     "status": {
       "description": "DataVolumeStatus contains the current status of the DataVolume",
@@ -697,7 +716,8 @@
                 "description": "DataVolumeConditionType is the string representation of known condition types",
                 "type": "string"
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "phase": {
@@ -722,7 +742,8 @@
           ],
           "format": "int32"
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -732,5 +753,6 @@
       "version": "v1alpha1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }
