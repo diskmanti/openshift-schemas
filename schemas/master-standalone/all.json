@@ -7,6 +7,18 @@
       "$ref": "_definitions.json#/definitions/backube.snapscheduler.v1.SnapshotScheduleList"
     },
     {
+      "$ref": "_definitions.json#/definitions/backube.volsync.v1alpha1.ReplicationDestination"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/backube.volsync.v1alpha1.ReplicationDestinationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/backube.volsync.v1alpha1.ReplicationSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/backube.volsync.v1alpha1.ReplicationSourceList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.Alertmanager"
     },
     {
