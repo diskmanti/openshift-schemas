@@ -1,0 +1,267 @@
+{
+  "description": "GenerateRequest is a request to process generate rule.",
+  "type": "object",
+  "required": [
+    "spec"
+  ],
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "kyverno.io/v1"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "GenerateRequest"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta_v2"
+    },
+    "spec": {
+      "description": "Spec is the information to identify the generate request.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "context",
+        "policy",
+        "resource"
+      ],
+      "properties": {
+        "context": {
+          "description": "Context ...",
+          "type": "object",
+          "properties": {
+            "admissionRequestInfo": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "admissionRequest": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "operation": {
+                  "description": "Operation is the type of resource operation being checked for admission control",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            },
+            "userInfo": {
+              "description": "RequestInfo contains permission info carried in an admission request.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "clusterRoles": {
+                  "description": "ClusterRoles is a list of possible clusterRoles send the request."
+                },
+                "roles": {
+                  "description": "Roles is a list of possible role send the request."
+                },
+                "userInfo": {
+                  "description": "UserInfo is the userInfo carried in the admission request.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "extra": {
+                      "description": "Any additional information provided by the authenticator.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "additionalProperties": {
+                        "description": "ExtraValue masks the value so protobuf can generate",
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    },
+                    "groups": {
+                      "description": "The names of groups this user is a part of.",
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "uid": {
+                      "description": "A unique value that identifies this user across time. If this user is deleted and another user by the same name is added, they will have different UIDs.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "username": {
+                      "description": "The name that uniquely identifies this user among all active users.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        "policy": {
+          "description": "Specifies the name of the policy.",
+          "type": "string"
+        },
+        "resource": {
+          "description": "ResourceSpec is the information to identify the generate request.",
+          "type": "object",
+          "properties": {
+            "apiVersion": {
+              "description": "APIVersion specifies resource apiVersion.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "kind": {
+              "description": "Kind specifies resource kind.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "name": {
+              "description": "Name specifies the resource name.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "namespace": {
+              "description": "Namespace specifies resource namespace.",
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "status": {
+      "description": "Status contains statistics related to generate request.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "state"
+      ],
+      "properties": {
+        "generatedResources": {
+          "description": "This will track the resources that are generated by the generate Policy. Will be used during clean up resources.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "ResourceSpec contains information to identify a resource.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "apiVersion": {
+                "description": "APIVersion specifies resource apiVersion.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "kind": {
+                "description": "Kind specifies resource kind.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "name": {
+                "description": "Name specifies the resource name.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "namespace": {
+                "description": "Namespace specifies resource namespace.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "message": {
+          "description": "Specifies request status message.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "state": {
+          "description": "State represents state of the generate request.",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "kyverno.io",
+      "kind": "GenerateRequest",
+      "version": "v1"
+    }
+  ],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

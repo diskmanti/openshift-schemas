@@ -250,7 +250,11 @@
                 "type": "string"
               }
             }
-          }
+          },
+          "x-kubernetes-list-map-keys": [
+            "type"
+          ],
+          "x-kubernetes-list-type": "map"
         },
         "failureTime": {
           "description": "FailureTime stores the time that this CertificateRequest failed. This is used to influence garbage collection and back-off.",

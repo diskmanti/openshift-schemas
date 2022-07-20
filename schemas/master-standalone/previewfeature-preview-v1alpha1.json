@@ -1,0 +1,175 @@
+{
+  "description": "PreviewFeature is the Schema for the preview feature API",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "preview.aro.openshift.io/v1alpha1"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "PreviewFeature"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta_v2"
+    },
+    "spec": {
+      "description": "PreviewFeatureSpec defines the preview feature for ARO",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "nsgFlowLogs": {
+          "description": "NSGFlowLogs contains configuration for NSG flow logs. Omit the configuration if you don't want the controller to reconcile NSG flow logs.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "enabled"
+          ],
+          "properties": {
+            "enabled": {
+              "description": "Enabled defines the behaviour of the reconciler: when true the controller will try to reach the desired configuration, when false it will try to disable the flow logs.",
+              "type": "boolean"
+            },
+            "networkWatcherID": {
+              "description": "NetworkWatcherID specifies the ID of the network watcher.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "retentionDays": {
+              "description": "RetentionDays specifies how many days the flowlogs should be retained.",
+              "type": [
+                "integer",
+                "null"
+              ],
+              "format": "int32"
+            },
+            "storageAccountResourceId": {
+              "description": "StorageAccountResourceID of the storage account used for collecting the flow logs. Must be in the same region of flow log.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "trafficAnalyticsInterval": {
+              "description": "Interval at which to conduct flow analytics. Values: 60m, 10m. Default: 60m.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "enum": [
+                "60m",
+                "10m"
+              ]
+            },
+            "trafficAnalyticsLogAnalyticsWorkspaceId": {
+              "description": "Required for TrafficAnalytics. Must be in the same region of flow log.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "version": {
+              "description": "Version defines version of NSG flow log.",
+              "type": [
+                "integer",
+                "null"
+              ],
+              "enum": [
+                1,
+                2
+              ]
+            }
+          }
+        }
+      }
+    },
+    "status": {
+      "description": "PreviewFeatureStatus defines the observed state of PreviewFeature",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "conditions": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "OperatorCondition is just the standard condition fields.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "lastTransitionTime": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time"
+              },
+              "message": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "reason": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "status": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "type": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "operatorVersion": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "preview.aro.openshift.io",
+      "kind": "PreviewFeature",
+      "version": "v1alpha1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

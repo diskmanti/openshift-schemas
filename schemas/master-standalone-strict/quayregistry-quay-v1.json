@@ -1,0 +1,361 @@
+{
+  "description": "QuayRegistry is the Schema for the quayregistries API.",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "quay.redhat.com/v1"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "QuayRegistry"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta_v2"
+    },
+    "spec": {
+      "description": "QuayRegistrySpec defines the desired state of QuayRegistry.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "components": {
+          "description": "Components declare how the Operator should handle backing Quay services.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "Component describes how the Operator should handle a backing Quay service.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "kind",
+              "managed"
+            ],
+            "properties": {
+              "kind": {
+                "description": "Kind is the unique name of this type of component.",
+                "type": "string"
+              },
+              "managed": {
+                "description": "Managed indicates whether or not the Operator is responsible for the lifecycle of this component. Default is true.",
+                "type": "boolean"
+              },
+              "overrides": {
+                "description": "Overrides holds information regarding component specific configurations.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "env": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "description": "EnvVar represents an environment variable present in a Container.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "required": [
+                        "name"
+                      ],
+                      "properties": {
+                        "name": {
+                          "description": "Name of the environment variable. Must be a C_IDENTIFIER.",
+                          "type": "string"
+                        },
+                        "value": {
+                          "description": "Variable references $(VAR_NAME) are expanded using the previously defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. \"$$(VAR_NAME)\" will produce the string literal \"$(VAR_NAME)\". Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to \"\".",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "valueFrom": {
+                          "description": "Source for the environment variable's value. Cannot be used if value is not empty.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "configMapKeyRef": {
+                              "description": "Selects a key of a ConfigMap.",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "required": [
+                                "key"
+                              ],
+                              "properties": {
+                                "key": {
+                                  "description": "The key to select.",
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "optional": {
+                                  "description": "Specify whether the ConfigMap or its key must be defined",
+                                  "type": [
+                                    "boolean",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "fieldRef": {
+                              "description": "Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['<KEY>']`, `metadata.annotations['<KEY>']`, spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "required": [
+                                "fieldPath"
+                              ],
+                              "properties": {
+                                "apiVersion": {
+                                  "description": "Version of the schema the FieldPath is written in terms of, defaults to \"v1\".",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "fieldPath": {
+                                  "description": "Path of the field to select in the specified API version.",
+                                  "type": "string"
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "resourceFieldRef": {
+                              "description": "Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "required": [
+                                "resource"
+                              ],
+                              "properties": {
+                                "containerName": {
+                                  "description": "Container name: required for volumes, optional for env vars",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "divisor": {
+                                  "description": "Specifies the output format of the exposed resources, defaults to \"1\"",
+                                  "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                                  "x-kubernetes-int-or-string": true
+                                },
+                                "resource": {
+                                  "description": "Required: resource to select",
+                                  "type": "string"
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "secretKeyRef": {
+                              "description": "Selects a key of a secret in the pod's namespace",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "required": [
+                                "key"
+                              ],
+                              "properties": {
+                                "key": {
+                                  "description": "The key of the secret to select from.  Must be a valid secret key.",
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "optional": {
+                                  "description": "Specify whether the Secret or its key must be defined",
+                                  "type": [
+                                    "boolean",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "replicas": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "format": "int32"
+                  },
+                  "volumeSize": {
+                    "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                    "x-kubernetes-int-or-string": true
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "configBundleSecret": {
+          "description": "ConfigBundleSecret is the name of the Kubernetes `Secret` in the same namespace which contains the base Quay config and extra certs.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "status": {
+      "description": "QuayRegistryStatus defines the observed state of QuayRegistry.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "conditions": {
+          "description": "Conditions represent the conditions that a QuayRegistry can have.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "Condition is a single condition of a QuayRegistry. Conditions should follow the \"abnormal-true\" principle in order to only bring the attention of users to \"broken\" states. Example: a condition of `type: \"Ready\", status: \"True\"`` is less useful and should be omitted whereas `type: \"NotReady\", status: \"True\"` is more useful when trying to monitor when something is wrong.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "lastTransitionTime": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time"
+              },
+              "lastUpdateTime": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time"
+              },
+              "message": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "reason": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "status": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "type": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "configEditorCredentialsSecret": {
+          "description": "ConfigEditorCredentialsSecret is the Kubernetes `Secret` containing the config editor password.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "configEditorEndpoint": {
+          "description": "ConfigEditorEndpoint is the external access point for a web-based reconfiguration interface for the Quay registry instance.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "currentVersion": {
+          "description": "CurrentVersion is the actual version of Quay that is actively deployed.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "lastUpdated": {
+          "description": "LastUpdate is the timestamp when the Operator last processed this instance.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "registryEndpoint": {
+          "description": "RegistryEndpoint is the external access point for the Quay registry.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "quay.redhat.com",
+      "kind": "QuayRegistry",
+      "version": "v1"
+    }
+  ],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

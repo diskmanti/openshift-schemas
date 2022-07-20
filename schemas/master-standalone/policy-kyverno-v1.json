@@ -1,0 +1,2376 @@
+{
+  "description": "Policy declares validation, mutation, and generation behaviors for matching resources. See: https://kyverno.io/docs/writing-policies/ for more information.",
+  "type": "object",
+  "required": [
+    "spec"
+  ],
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "kyverno.io/v1"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "Policy"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta_v2"
+    },
+    "spec": {
+      "description": "Spec defines policy behaviors and contains one or more rules.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "background": {
+          "description": "Background controls if rules are applied to existing resources during a background scan. Optional. Default value is \"true\". The value must be set to \"false\" if the policy rule uses variables that are only available in the admission review request (e.g. user name).",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "failurePolicy": {
+          "description": "FailurePolicy defines how unrecognized errors from the admission endpoint are handled. Rules within the same policy share the same failure behavior. Allowed values are Ignore or Fail. Defaults to Fail.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "Ignore",
+            "Fail"
+          ]
+        },
+        "rules": {
+          "description": "Rules is a list of Rule instances. A Policy contains multiple rules and each rule can validate, mutate, or generate resources.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "Rule defines a validation, mutation, or generation control for matching resources. Each rules contains a match declaration to select resources, and an optional exclude declaration to specify which resources to exclude.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "context": {
+                "description": "Context defines variables and data sources that can be used during rule execution.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "description": "ContextEntry adds variables and data sources to a rule Context. Either a ConfigMap reference or a APILookup must be provided.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "apiCall": {
+                      "description": "APICall defines an HTTP request to the Kubernetes API server. The JSON data retrieved is stored in the context.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "required": [
+                        "urlPath"
+                      ],
+                      "properties": {
+                        "jmesPath": {
+                          "description": "JMESPath is an optional JSON Match Expression that can be used to transform the JSON response returned from the API server. For example a JMESPath of \"items | length(@)\" applied to the API server response to the URLPath \"/apis/apps/v1/deployments\" will return the total count of deployments across all namespaces.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "urlPath": {
+                          "description": "URLPath is the URL path to be used in the HTTP GET request to the Kubernetes API server (e.g. \"/api/v1/namespaces\" or  \"/apis/apps/v1/deployments\"). The format required is the same format used by the `kubectl get --raw` command.",
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "configMap": {
+                      "description": "ConfigMap is the ConfigMap reference.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "required": [
+                        "name"
+                      ],
+                      "properties": {
+                        "name": {
+                          "description": "Name is the ConfigMap name.",
+                          "type": "string"
+                        },
+                        "namespace": {
+                          "description": "Namespace is the ConfigMap namespace.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    },
+                    "name": {
+                      "description": "Name is the variable name.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "exclude": {
+                "description": "ExcludeResources defines when this policy rule should not be applied. The exclude criteria can include resource information (e.g. kind, name, namespace, labels) and admission review request information like the name or role.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "all": {
+                    "description": "All allows specifying resources which will be ANDed",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "description": "ResourceFilters allow users to \"AND\" or \"OR\" between resources",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "clusterRoles": {
+                          "description": "ClusterRoles is the list of cluster-wide role names for the user.",
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "resources": {
+                          "description": "ResourceDescription contains information about the resource being created or modified.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "annotations": {
+                              "description": "Annotations is a  map of annotations (key-value pairs of type string). Annotation keys and values support the wildcard characters \"*\" (matches zero or many characters) and \"?\" (matches at least one character).",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "additionalProperties": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "kinds": {
+                              "description": "Kinds is a list of resource kinds.",
+                              "type": [
+                                "array",
+                                "null"
+                              ],
+                              "items": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "name": {
+                              "description": "Name is the name of the resource. The name supports wildcard characters \"*\" (matches zero or many characters) and \"?\" (at least one character).",
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "names": {
+                              "description": "Names are the names of the resources. Each name supports wildcard characters \"*\" (matches zero or many characters) and \"?\" (at least one character). NOTE: \"Name\" is being deprecated in favor of \"Names\".",
+                              "type": [
+                                "array",
+                                "null"
+                              ],
+                              "items": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "namespaceSelector": {
+                              "description": "NamespaceSelector is a label selector for the resource namespace. Label keys and values in `matchLabels` support the wildcard characters `*` (matches zero or many characters) and `?` (matches one character).Wildcards allows writing label selectors like [\"storage.k8s.io/*\": \"*\"]. Note that using [\"*\" : \"*\"] matches any key and value but does not match an empty label set.",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "properties": {
+                                "matchExpressions": {
+                                  "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed.",
+                                  "type": [
+                                    "array",
+                                    "null"
+                                  ],
+                                  "items": {
+                                    "description": "A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.",
+                                    "type": [
+                                      "object",
+                                      "null"
+                                    ],
+                                    "required": [
+                                      "key",
+                                      "operator"
+                                    ],
+                                    "properties": {
+                                      "key": {
+                                        "description": "key is the label key that the selector applies to.",
+                                        "type": "string"
+                                      },
+                                      "operator": {
+                                        "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.",
+                                        "type": "string"
+                                      },
+                                      "values": {
+                                        "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.",
+                                        "type": [
+                                          "array",
+                                          "null"
+                                        ],
+                                        "items": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "matchLabels": {
+                                  "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "additionalProperties": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              }
+                            },
+                            "namespaces": {
+                              "description": "Namespaces is a list of namespaces names. Each name supports wildcard characters \"*\" (matches zero or many characters) and \"?\" (at least one character).",
+                              "type": [
+                                "array",
+                                "null"
+                              ],
+                              "items": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "selector": {
+                              "description": "Selector is a label selector. Label keys and values in `matchLabels` support the wildcard characters `*` (matches zero or many characters) and `?` (matches one character). Wildcards allows writing label selectors like [\"storage.k8s.io/*\": \"*\"]. Note that using [\"*\" : \"*\"] matches any key and value but does not match an empty label set.",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "properties": {
+                                "matchExpressions": {
+                                  "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed.",
+                                  "type": [
+                                    "array",
+                                    "null"
+                                  ],
+                                  "items": {
+                                    "description": "A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.",
+                                    "type": [
+                                      "object",
+                                      "null"
+                                    ],
+                                    "required": [
+                                      "key",
+                                      "operator"
+                                    ],
+                                    "properties": {
+                                      "key": {
+                                        "description": "key is the label key that the selector applies to.",
+                                        "type": "string"
+                                      },
+                                      "operator": {
+                                        "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.",
+                                        "type": "string"
+                                      },
+                                      "values": {
+                                        "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.",
+                                        "type": [
+                                          "array",
+                                          "null"
+                                        ],
+                                        "items": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "matchLabels": {
+                                  "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "additionalProperties": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "roles": {
+                          "description": "Roles is the list of namespaced role names for the user.",
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "subjects": {
+                          "description": "Subjects is the list of subject names like users, user groups, and service accounts.",
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "description": "Subject contains a reference to the object or user identities a role binding applies to.  This can either hold a direct API object reference, or a value for non-objects such as user and group names.",
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "required": [
+                              "kind",
+                              "name"
+                            ],
+                            "properties": {
+                              "apiGroup": {
+                                "description": "APIGroup holds the API group of the referenced subject. Defaults to \"\" for ServiceAccount subjects. Defaults to \"rbac.authorization.k8s.io\" for User and Group subjects.",
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "kind": {
+                                "description": "Kind of object being referenced. Values defined by this API group are \"User\", \"Group\", and \"ServiceAccount\". If the Authorizer does not recognized the kind value, the Authorizer should report an error.",
+                                "type": "string"
+                              },
+                              "name": {
+                                "description": "Name of the object being referenced.",
+                                "type": "string"
+                              },
+                              "namespace": {
+                                "description": "Namespace of the referenced object.  If the object kind is non-namespace, such as \"User\" or \"Group\", and this value is not empty the Authorizer should report an error.",
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "any": {
+                    "description": "Any allows specifying resources which will be ORed",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "description": "ResourceFilters allow users to \"AND\" or \"OR\" between resources",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "clusterRoles": {
+                          "description": "ClusterRoles is the list of cluster-wide role names for the user.",
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "resources": {
+                          "description": "ResourceDescription contains information about the resource being created or modified.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "annotations": {
+                              "description": "Annotations is a  map of annotations (key-value pairs of type string). Annotation keys and values support the wildcard characters \"*\" (matches zero or many characters) and \"?\" (matches at least one character).",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "additionalProperties": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "kinds": {
+                              "description": "Kinds is a list of resource kinds.",
+                              "type": [
+                                "array",
+                                "null"
+                              ],
+                              "items": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "name": {
+                              "description": "Name is the name of the resource. The name supports wildcard characters \"*\" (matches zero or many characters) and \"?\" (at least one character).",
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "names": {
+                              "description": "Names are the names of the resources. Each name supports wildcard characters \"*\" (matches zero or many characters) and \"?\" (at least one character). NOTE: \"Name\" is being deprecated in favor of \"Names\".",
+                              "type": [
+                                "array",
+                                "null"
+                              ],
+                              "items": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "namespaceSelector": {
+                              "description": "NamespaceSelector is a label selector for the resource namespace. Label keys and values in `matchLabels` support the wildcard characters `*` (matches zero or many characters) and `?` (matches one character).Wildcards allows writing label selectors like [\"storage.k8s.io/*\": \"*\"]. Note that using [\"*\" : \"*\"] matches any key and value but does not match an empty label set.",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "properties": {
+                                "matchExpressions": {
+                                  "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed.",
+                                  "type": [
+                                    "array",
+                                    "null"
+                                  ],
+                                  "items": {
+                                    "description": "A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.",
+                                    "type": [
+                                      "object",
+                                      "null"
+                                    ],
+                                    "required": [
+                                      "key",
+                                      "operator"
+                                    ],
+                                    "properties": {
+                                      "key": {
+                                        "description": "key is the label key that the selector applies to.",
+                                        "type": "string"
+                                      },
+                                      "operator": {
+                                        "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.",
+                                        "type": "string"
+                                      },
+                                      "values": {
+                                        "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.",
+                                        "type": [
+                                          "array",
+                                          "null"
+                                        ],
+                                        "items": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "matchLabels": {
+                                  "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "additionalProperties": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              }
+                            },
+                            "namespaces": {
+                              "description": "Namespaces is a list of namespaces names. Each name supports wildcard characters \"*\" (matches zero or many characters) and \"?\" (at least one character).",
+                              "type": [
+                                "array",
+                                "null"
+                              ],
+                              "items": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "selector": {
+                              "description": "Selector is a label selector. Label keys and values in `matchLabels` support the wildcard characters `*` (matches zero or many characters) and `?` (matches one character). Wildcards allows writing label selectors like [\"storage.k8s.io/*\": \"*\"]. Note that using [\"*\" : \"*\"] matches any key and value but does not match an empty label set.",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "properties": {
+                                "matchExpressions": {
+                                  "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed.",
+                                  "type": [
+                                    "array",
+                                    "null"
+                                  ],
+                                  "items": {
+                                    "description": "A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.",
+                                    "type": [
+                                      "object",
+                                      "null"
+                                    ],
+                                    "required": [
+                                      "key",
+                                      "operator"
+                                    ],
+                                    "properties": {
+                                      "key": {
+                                        "description": "key is the label key that the selector applies to.",
+                                        "type": "string"
+                                      },
+                                      "operator": {
+                                        "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.",
+                                        "type": "string"
+                                      },
+                                      "values": {
+                                        "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.",
+                                        "type": [
+                                          "array",
+                                          "null"
+                                        ],
+                                        "items": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "matchLabels": {
+                                  "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "additionalProperties": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "roles": {
+                          "description": "Roles is the list of namespaced role names for the user.",
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "subjects": {
+                          "description": "Subjects is the list of subject names like users, user groups, and service accounts.",
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "description": "Subject contains a reference to the object or user identities a role binding applies to.  This can either hold a direct API object reference, or a value for non-objects such as user and group names.",
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "required": [
+                              "kind",
+                              "name"
+                            ],
+                            "properties": {
+                              "apiGroup": {
+                                "description": "APIGroup holds the API group of the referenced subject. Defaults to \"\" for ServiceAccount subjects. Defaults to \"rbac.authorization.k8s.io\" for User and Group subjects.",
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "kind": {
+                                "description": "Kind of object being referenced. Values defined by this API group are \"User\", \"Group\", and \"ServiceAccount\". If the Authorizer does not recognized the kind value, the Authorizer should report an error.",
+                                "type": "string"
+                              },
+                              "name": {
+                                "description": "Name of the object being referenced.",
+                                "type": "string"
+                              },
+                              "namespace": {
+                                "description": "Namespace of the referenced object.  If the object kind is non-namespace, such as \"User\" or \"Group\", and this value is not empty the Authorizer should report an error.",
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "clusterRoles": {
+                    "description": "ClusterRoles is the list of cluster-wide role names for the user.",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "resources": {
+                    "description": "ResourceDescription contains information about the resource being created or modified. Specifying ResourceDescription directly under exclude is being deprecated. Please specify under \"any\" or \"all\" instead.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "annotations": {
+                        "description": "Annotations is a  map of annotations (key-value pairs of type string). Annotation keys and values support the wildcard characters \"*\" (matches zero or many characters) and \"?\" (matches at least one character).",
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "additionalProperties": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "kinds": {
+                        "description": "Kinds is a list of resource kinds.",
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "name": {
+                        "description": "Name is the name of the resource. The name supports wildcard characters \"*\" (matches zero or many characters) and \"?\" (at least one character).",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "names": {
+                        "description": "Names are the names of the resources. Each name supports wildcard characters \"*\" (matches zero or many characters) and \"?\" (at least one character). NOTE: \"Name\" is being deprecated in favor of \"Names\".",
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "namespaceSelector": {
+                        "description": "NamespaceSelector is a label selector for the resource namespace. Label keys and values in `matchLabels` support the wildcard characters `*` (matches zero or many characters) and `?` (matches one character).Wildcards allows writing label selectors like [\"storage.k8s.io/*\": \"*\"]. Note that using [\"*\" : \"*\"] matches any key and value but does not match an empty label set.",
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "properties": {
+                          "matchExpressions": {
+                            "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed.",
+                            "type": [
+                              "array",
+                              "null"
+                            ],
+                            "items": {
+                              "description": "A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "required": [
+                                "key",
+                                "operator"
+                              ],
+                              "properties": {
+                                "key": {
+                                  "description": "key is the label key that the selector applies to.",
+                                  "type": "string"
+                                },
+                                "operator": {
+                                  "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.",
+                                  "type": "string"
+                                },
+                                "values": {
+                                  "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.",
+                                  "type": [
+                                    "array",
+                                    "null"
+                                  ],
+                                  "items": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "matchLabels": {
+                            "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "additionalProperties": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            }
+                          }
+                        }
+                      },
+                      "namespaces": {
+                        "description": "Namespaces is a list of namespaces names. Each name supports wildcard characters \"*\" (matches zero or many characters) and \"?\" (at least one character).",
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "selector": {
+                        "description": "Selector is a label selector. Label keys and values in `matchLabels` support the wildcard characters `*` (matches zero or many characters) and `?` (matches one character). Wildcards allows writing label selectors like [\"storage.k8s.io/*\": \"*\"]. Note that using [\"*\" : \"*\"] matches any key and value but does not match an empty label set.",
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "properties": {
+                          "matchExpressions": {
+                            "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed.",
+                            "type": [
+                              "array",
+                              "null"
+                            ],
+                            "items": {
+                              "description": "A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "required": [
+                                "key",
+                                "operator"
+                              ],
+                              "properties": {
+                                "key": {
+                                  "description": "key is the label key that the selector applies to.",
+                                  "type": "string"
+                                },
+                                "operator": {
+                                  "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.",
+                                  "type": "string"
+                                },
+                                "values": {
+                                  "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.",
+                                  "type": [
+                                    "array",
+                                    "null"
+                                  ],
+                                  "items": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "matchLabels": {
+                            "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "additionalProperties": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "roles": {
+                    "description": "Roles is the list of namespaced role names for the user.",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "subjects": {
+                    "description": "Subjects is the list of subject names like users, user groups, and service accounts.",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "description": "Subject contains a reference to the object or user identities a role binding applies to.  This can either hold a direct API object reference, or a value for non-objects such as user and group names.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "required": [
+                        "kind",
+                        "name"
+                      ],
+                      "properties": {
+                        "apiGroup": {
+                          "description": "APIGroup holds the API group of the referenced subject. Defaults to \"\" for ServiceAccount subjects. Defaults to \"rbac.authorization.k8s.io\" for User and Group subjects.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "kind": {
+                          "description": "Kind of object being referenced. Values defined by this API group are \"User\", \"Group\", and \"ServiceAccount\". If the Authorizer does not recognized the kind value, the Authorizer should report an error.",
+                          "type": "string"
+                        },
+                        "name": {
+                          "description": "Name of the object being referenced.",
+                          "type": "string"
+                        },
+                        "namespace": {
+                          "description": "Namespace of the referenced object.  If the object kind is non-namespace, such as \"User\" or \"Group\", and this value is not empty the Authorizer should report an error.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "generate": {
+                "description": "Generation is used to create new resources.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "apiVersion": {
+                    "description": "APIVersion specifies resource apiVersion.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "clone": {
+                    "description": "Clone specifies the source resource used to populate each generated resource. At most one of Data or Clone can be specified. If neither are provided, the generated resource will be created with default data only.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "name": {
+                        "description": "Name specifies name of the resource.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "namespace": {
+                        "description": "Namespace specifies source resource namespace.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  },
+                  "data": {
+                    "description": "Data provides the resource declaration used to populate each generated resource. At most one of Data or Clone must be specified. If neither are provided, the generated resource will be created with default data only.",
+                    "x-kubernetes-preserve-unknown-fields": true
+                  },
+                  "kind": {
+                    "description": "Kind specifies resource kind.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "name": {
+                    "description": "Name specifies the resource name.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "namespace": {
+                    "description": "Namespace specifies resource namespace.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "synchronize": {
+                    "description": "Synchronize controls if generated resources should be kept in-sync with their source resource. If Synchronize is set to \"true\" changes to generated resources will be overwritten with resource data from Data or the resource specified in the Clone declaration. Optional. Defaults to \"false\" if not specified.",
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  }
+                }
+              },
+              "match": {
+                "description": "MatchResources defines when this policy rule should be applied. The match criteria can include resource information (e.g. kind, name, namespace, labels) and admission review request information like the user name or role. At least one kind is required.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "all": {
+                    "description": "All allows specifying resources which will be ANDed",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "description": "ResourceFilters allow users to \"AND\" or \"OR\" between resources",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "clusterRoles": {
+                          "description": "ClusterRoles is the list of cluster-wide role names for the user.",
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "resources": {
+                          "description": "ResourceDescription contains information about the resource being created or modified.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "annotations": {
+                              "description": "Annotations is a  map of annotations (key-value pairs of type string). Annotation keys and values support the wildcard characters \"*\" (matches zero or many characters) and \"?\" (matches at least one character).",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "additionalProperties": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "kinds": {
+                              "description": "Kinds is a list of resource kinds.",
+                              "type": [
+                                "array",
+                                "null"
+                              ],
+                              "items": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "name": {
+                              "description": "Name is the name of the resource. The name supports wildcard characters \"*\" (matches zero or many characters) and \"?\" (at least one character).",
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "names": {
+                              "description": "Names are the names of the resources. Each name supports wildcard characters \"*\" (matches zero or many characters) and \"?\" (at least one character). NOTE: \"Name\" is being deprecated in favor of \"Names\".",
+                              "type": [
+                                "array",
+                                "null"
+                              ],
+                              "items": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "namespaceSelector": {
+                              "description": "NamespaceSelector is a label selector for the resource namespace. Label keys and values in `matchLabels` support the wildcard characters `*` (matches zero or many characters) and `?` (matches one character).Wildcards allows writing label selectors like [\"storage.k8s.io/*\": \"*\"]. Note that using [\"*\" : \"*\"] matches any key and value but does not match an empty label set.",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "properties": {
+                                "matchExpressions": {
+                                  "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed.",
+                                  "type": [
+                                    "array",
+                                    "null"
+                                  ],
+                                  "items": {
+                                    "description": "A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.",
+                                    "type": [
+                                      "object",
+                                      "null"
+                                    ],
+                                    "required": [
+                                      "key",
+                                      "operator"
+                                    ],
+                                    "properties": {
+                                      "key": {
+                                        "description": "key is the label key that the selector applies to.",
+                                        "type": "string"
+                                      },
+                                      "operator": {
+                                        "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.",
+                                        "type": "string"
+                                      },
+                                      "values": {
+                                        "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.",
+                                        "type": [
+                                          "array",
+                                          "null"
+                                        ],
+                                        "items": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "matchLabels": {
+                                  "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "additionalProperties": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              }
+                            },
+                            "namespaces": {
+                              "description": "Namespaces is a list of namespaces names. Each name supports wildcard characters \"*\" (matches zero or many characters) and \"?\" (at least one character).",
+                              "type": [
+                                "array",
+                                "null"
+                              ],
+                              "items": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "selector": {
+                              "description": "Selector is a label selector. Label keys and values in `matchLabels` support the wildcard characters `*` (matches zero or many characters) and `?` (matches one character). Wildcards allows writing label selectors like [\"storage.k8s.io/*\": \"*\"]. Note that using [\"*\" : \"*\"] matches any key and value but does not match an empty label set.",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "properties": {
+                                "matchExpressions": {
+                                  "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed.",
+                                  "type": [
+                                    "array",
+                                    "null"
+                                  ],
+                                  "items": {
+                                    "description": "A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.",
+                                    "type": [
+                                      "object",
+                                      "null"
+                                    ],
+                                    "required": [
+                                      "key",
+                                      "operator"
+                                    ],
+                                    "properties": {
+                                      "key": {
+                                        "description": "key is the label key that the selector applies to.",
+                                        "type": "string"
+                                      },
+                                      "operator": {
+                                        "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.",
+                                        "type": "string"
+                                      },
+                                      "values": {
+                                        "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.",
+                                        "type": [
+                                          "array",
+                                          "null"
+                                        ],
+                                        "items": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "matchLabels": {
+                                  "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "additionalProperties": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "roles": {
+                          "description": "Roles is the list of namespaced role names for the user.",
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "subjects": {
+                          "description": "Subjects is the list of subject names like users, user groups, and service accounts.",
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "description": "Subject contains a reference to the object or user identities a role binding applies to.  This can either hold a direct API object reference, or a value for non-objects such as user and group names.",
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "required": [
+                              "kind",
+                              "name"
+                            ],
+                            "properties": {
+                              "apiGroup": {
+                                "description": "APIGroup holds the API group of the referenced subject. Defaults to \"\" for ServiceAccount subjects. Defaults to \"rbac.authorization.k8s.io\" for User and Group subjects.",
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "kind": {
+                                "description": "Kind of object being referenced. Values defined by this API group are \"User\", \"Group\", and \"ServiceAccount\". If the Authorizer does not recognized the kind value, the Authorizer should report an error.",
+                                "type": "string"
+                              },
+                              "name": {
+                                "description": "Name of the object being referenced.",
+                                "type": "string"
+                              },
+                              "namespace": {
+                                "description": "Namespace of the referenced object.  If the object kind is non-namespace, such as \"User\" or \"Group\", and this value is not empty the Authorizer should report an error.",
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "any": {
+                    "description": "Any allows specifying resources which will be ORed",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "description": "ResourceFilters allow users to \"AND\" or \"OR\" between resources",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "clusterRoles": {
+                          "description": "ClusterRoles is the list of cluster-wide role names for the user.",
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "resources": {
+                          "description": "ResourceDescription contains information about the resource being created or modified.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "annotations": {
+                              "description": "Annotations is a  map of annotations (key-value pairs of type string). Annotation keys and values support the wildcard characters \"*\" (matches zero or many characters) and \"?\" (matches at least one character).",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "additionalProperties": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "kinds": {
+                              "description": "Kinds is a list of resource kinds.",
+                              "type": [
+                                "array",
+                                "null"
+                              ],
+                              "items": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "name": {
+                              "description": "Name is the name of the resource. The name supports wildcard characters \"*\" (matches zero or many characters) and \"?\" (at least one character).",
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "names": {
+                              "description": "Names are the names of the resources. Each name supports wildcard characters \"*\" (matches zero or many characters) and \"?\" (at least one character). NOTE: \"Name\" is being deprecated in favor of \"Names\".",
+                              "type": [
+                                "array",
+                                "null"
+                              ],
+                              "items": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "namespaceSelector": {
+                              "description": "NamespaceSelector is a label selector for the resource namespace. Label keys and values in `matchLabels` support the wildcard characters `*` (matches zero or many characters) and `?` (matches one character).Wildcards allows writing label selectors like [\"storage.k8s.io/*\": \"*\"]. Note that using [\"*\" : \"*\"] matches any key and value but does not match an empty label set.",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "properties": {
+                                "matchExpressions": {
+                                  "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed.",
+                                  "type": [
+                                    "array",
+                                    "null"
+                                  ],
+                                  "items": {
+                                    "description": "A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.",
+                                    "type": [
+                                      "object",
+                                      "null"
+                                    ],
+                                    "required": [
+                                      "key",
+                                      "operator"
+                                    ],
+                                    "properties": {
+                                      "key": {
+                                        "description": "key is the label key that the selector applies to.",
+                                        "type": "string"
+                                      },
+                                      "operator": {
+                                        "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.",
+                                        "type": "string"
+                                      },
+                                      "values": {
+                                        "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.",
+                                        "type": [
+                                          "array",
+                                          "null"
+                                        ],
+                                        "items": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "matchLabels": {
+                                  "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "additionalProperties": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              }
+                            },
+                            "namespaces": {
+                              "description": "Namespaces is a list of namespaces names. Each name supports wildcard characters \"*\" (matches zero or many characters) and \"?\" (at least one character).",
+                              "type": [
+                                "array",
+                                "null"
+                              ],
+                              "items": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "selector": {
+                              "description": "Selector is a label selector. Label keys and values in `matchLabels` support the wildcard characters `*` (matches zero or many characters) and `?` (matches one character). Wildcards allows writing label selectors like [\"storage.k8s.io/*\": \"*\"]. Note that using [\"*\" : \"*\"] matches any key and value but does not match an empty label set.",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "properties": {
+                                "matchExpressions": {
+                                  "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed.",
+                                  "type": [
+                                    "array",
+                                    "null"
+                                  ],
+                                  "items": {
+                                    "description": "A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.",
+                                    "type": [
+                                      "object",
+                                      "null"
+                                    ],
+                                    "required": [
+                                      "key",
+                                      "operator"
+                                    ],
+                                    "properties": {
+                                      "key": {
+                                        "description": "key is the label key that the selector applies to.",
+                                        "type": "string"
+                                      },
+                                      "operator": {
+                                        "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.",
+                                        "type": "string"
+                                      },
+                                      "values": {
+                                        "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.",
+                                        "type": [
+                                          "array",
+                                          "null"
+                                        ],
+                                        "items": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "matchLabels": {
+                                  "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "additionalProperties": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "roles": {
+                          "description": "Roles is the list of namespaced role names for the user.",
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "subjects": {
+                          "description": "Subjects is the list of subject names like users, user groups, and service accounts.",
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "description": "Subject contains a reference to the object or user identities a role binding applies to.  This can either hold a direct API object reference, or a value for non-objects such as user and group names.",
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "required": [
+                              "kind",
+                              "name"
+                            ],
+                            "properties": {
+                              "apiGroup": {
+                                "description": "APIGroup holds the API group of the referenced subject. Defaults to \"\" for ServiceAccount subjects. Defaults to \"rbac.authorization.k8s.io\" for User and Group subjects.",
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "kind": {
+                                "description": "Kind of object being referenced. Values defined by this API group are \"User\", \"Group\", and \"ServiceAccount\". If the Authorizer does not recognized the kind value, the Authorizer should report an error.",
+                                "type": "string"
+                              },
+                              "name": {
+                                "description": "Name of the object being referenced.",
+                                "type": "string"
+                              },
+                              "namespace": {
+                                "description": "Namespace of the referenced object.  If the object kind is non-namespace, such as \"User\" or \"Group\", and this value is not empty the Authorizer should report an error.",
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "clusterRoles": {
+                    "description": "ClusterRoles is the list of cluster-wide role names for the user.",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "resources": {
+                    "description": "ResourceDescription contains information about the resource being created or modified. Requires at least one tag to be specified when under MatchResources. Specifying ResourceDescription directly under match is being deprecated. Please specify under \"any\" or \"all\" instead.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "annotations": {
+                        "description": "Annotations is a  map of annotations (key-value pairs of type string). Annotation keys and values support the wildcard characters \"*\" (matches zero or many characters) and \"?\" (matches at least one character).",
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "additionalProperties": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "kinds": {
+                        "description": "Kinds is a list of resource kinds.",
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "name": {
+                        "description": "Name is the name of the resource. The name supports wildcard characters \"*\" (matches zero or many characters) and \"?\" (at least one character).",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "names": {
+                        "description": "Names are the names of the resources. Each name supports wildcard characters \"*\" (matches zero or many characters) and \"?\" (at least one character). NOTE: \"Name\" is being deprecated in favor of \"Names\".",
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "namespaceSelector": {
+                        "description": "NamespaceSelector is a label selector for the resource namespace. Label keys and values in `matchLabels` support the wildcard characters `*` (matches zero or many characters) and `?` (matches one character).Wildcards allows writing label selectors like [\"storage.k8s.io/*\": \"*\"]. Note that using [\"*\" : \"*\"] matches any key and value but does not match an empty label set.",
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "properties": {
+                          "matchExpressions": {
+                            "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed.",
+                            "type": [
+                              "array",
+                              "null"
+                            ],
+                            "items": {
+                              "description": "A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "required": [
+                                "key",
+                                "operator"
+                              ],
+                              "properties": {
+                                "key": {
+                                  "description": "key is the label key that the selector applies to.",
+                                  "type": "string"
+                                },
+                                "operator": {
+                                  "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.",
+                                  "type": "string"
+                                },
+                                "values": {
+                                  "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.",
+                                  "type": [
+                                    "array",
+                                    "null"
+                                  ],
+                                  "items": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "matchLabels": {
+                            "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "additionalProperties": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            }
+                          }
+                        }
+                      },
+                      "namespaces": {
+                        "description": "Namespaces is a list of namespaces names. Each name supports wildcard characters \"*\" (matches zero or many characters) and \"?\" (at least one character).",
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "selector": {
+                        "description": "Selector is a label selector. Label keys and values in `matchLabels` support the wildcard characters `*` (matches zero or many characters) and `?` (matches one character). Wildcards allows writing label selectors like [\"storage.k8s.io/*\": \"*\"]. Note that using [\"*\" : \"*\"] matches any key and value but does not match an empty label set.",
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "properties": {
+                          "matchExpressions": {
+                            "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed.",
+                            "type": [
+                              "array",
+                              "null"
+                            ],
+                            "items": {
+                              "description": "A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "required": [
+                                "key",
+                                "operator"
+                              ],
+                              "properties": {
+                                "key": {
+                                  "description": "key is the label key that the selector applies to.",
+                                  "type": "string"
+                                },
+                                "operator": {
+                                  "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.",
+                                  "type": "string"
+                                },
+                                "values": {
+                                  "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.",
+                                  "type": [
+                                    "array",
+                                    "null"
+                                  ],
+                                  "items": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "matchLabels": {
+                            "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "additionalProperties": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "roles": {
+                    "description": "Roles is the list of namespaced role names for the user.",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "subjects": {
+                    "description": "Subjects is the list of subject names like users, user groups, and service accounts.",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "description": "Subject contains a reference to the object or user identities a role binding applies to.  This can either hold a direct API object reference, or a value for non-objects such as user and group names.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "required": [
+                        "kind",
+                        "name"
+                      ],
+                      "properties": {
+                        "apiGroup": {
+                          "description": "APIGroup holds the API group of the referenced subject. Defaults to \"\" for ServiceAccount subjects. Defaults to \"rbac.authorization.k8s.io\" for User and Group subjects.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "kind": {
+                          "description": "Kind of object being referenced. Values defined by this API group are \"User\", \"Group\", and \"ServiceAccount\". If the Authorizer does not recognized the kind value, the Authorizer should report an error.",
+                          "type": "string"
+                        },
+                        "name": {
+                          "description": "Name of the object being referenced.",
+                          "type": "string"
+                        },
+                        "namespace": {
+                          "description": "Namespace of the referenced object.  If the object kind is non-namespace, such as \"User\" or \"Group\", and this value is not empty the Authorizer should report an error.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "mutate": {
+                "description": "Mutation is used to modify matching resources.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "foreach": {
+                    "description": "ForEach applies policy rule changes to nested elements.",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "description": "ForEach applies policy rule changes to nested elements.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "context": {
+                          "description": "Context defines variables and data sources that can be used during rule execution.",
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "description": "ContextEntry adds variables and data sources to a rule Context. Either a ConfigMap reference or a APILookup must be provided.",
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "properties": {
+                              "apiCall": {
+                                "description": "APICall defines an HTTP request to the Kubernetes API server. The JSON data retrieved is stored in the context.",
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "required": [
+                                  "urlPath"
+                                ],
+                                "properties": {
+                                  "jmesPath": {
+                                    "description": "JMESPath is an optional JSON Match Expression that can be used to transform the JSON response returned from the API server. For example a JMESPath of \"items | length(@)\" applied to the API server response to the URLPath \"/apis/apps/v1/deployments\" will return the total count of deployments across all namespaces.",
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "urlPath": {
+                                    "description": "URLPath is the URL path to be used in the HTTP GET request to the Kubernetes API server (e.g. \"/api/v1/namespaces\" or  \"/apis/apps/v1/deployments\"). The format required is the same format used by the `kubectl get --raw` command.",
+                                    "type": "string"
+                                  }
+                                }
+                              },
+                              "configMap": {
+                                "description": "ConfigMap is the ConfigMap reference.",
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "required": [
+                                  "name"
+                                ],
+                                "properties": {
+                                  "name": {
+                                    "description": "Name is the ConfigMap name.",
+                                    "type": "string"
+                                  },
+                                  "namespace": {
+                                    "description": "Namespace is the ConfigMap namespace.",
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              },
+                              "name": {
+                                "description": "Name is the variable name.",
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            }
+                          }
+                        },
+                        "list": {
+                          "description": "List specifies a JMESPath expression that results in one or more elements to which the validation logic is applied.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "patchStrategicMerge": {
+                          "description": "PatchStrategicMerge is a strategic merge patch used to modify resources. See https://kubernetes.io/docs/tasks/manage-kubernetes-objects/update-api-object-kubectl-patch/ and https://kubectl.docs.kubernetes.io/references/kustomize/patchesstrategicmerge/.",
+                          "x-kubernetes-preserve-unknown-fields": true
+                        },
+                        "preconditions": {
+                          "description": "Preconditions are used to determine if a policy rule should be applied by evaluating a set of conditions. The declaration can contain nested `any` or `all` statements. See: https://kyverno.io/docs/writing-policies/preconditions/",
+                          "x-kubernetes-preserve-unknown-fields": true
+                        }
+                      }
+                    }
+                  },
+                  "overlay": {
+                    "description": "Overlay specifies an overlay pattern to modify resources. DEPRECATED. Use PatchStrategicMerge instead. Scheduled for removal in release 1.5+.",
+                    "x-kubernetes-preserve-unknown-fields": true
+                  },
+                  "patchStrategicMerge": {
+                    "description": "PatchStrategicMerge is a strategic merge patch used to modify resources. See https://kubernetes.io/docs/tasks/manage-kubernetes-objects/update-api-object-kubectl-patch/ and https://kubectl.docs.kubernetes.io/references/kustomize/patchesstrategicmerge/.",
+                    "x-kubernetes-preserve-unknown-fields": true
+                  },
+                  "patches": {
+                    "description": "Patches specifies a RFC 6902 JSON Patch to modify resources. DEPRECATED. Use PatchesJSON6902 instead. Scheduled for removal in release 1.5+.",
+                    "x-kubernetes-preserve-unknown-fields": true
+                  },
+                  "patchesJson6902": {
+                    "description": "PatchesJSON6902 is a list of RFC 6902 JSON Patch declarations used to modify resources. See https://tools.ietf.org/html/rfc6902 and https://kubectl.docs.kubernetes.io/references/kustomize/patchesjson6902/.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              },
+              "name": {
+                "description": "Name is a label to identify the rule, It must be unique within the policy.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 63
+              },
+              "preconditions": {
+                "description": "Preconditions are used to determine if a policy rule should be applied by evaluating a set of conditions. The declaration can contain nested `any` or `all` statements. A direct list of conditions (without `any` or `all` statements is supported for backwards compatibility but will be deprecated in the next major release. See: https://kyverno.io/docs/writing-policies/preconditions/",
+                "x-kubernetes-preserve-unknown-fields": true
+              },
+              "validate": {
+                "description": "Validation is used to validate matching resources.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "anyPattern": {
+                    "description": "AnyPattern specifies list of validation patterns. At least one of the patterns must be satisfied for the validation rule to succeed.",
+                    "x-kubernetes-preserve-unknown-fields": true
+                  },
+                  "deny": {
+                    "description": "Deny defines conditions used to pass or fail a validation rule.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "conditions": {
+                        "description": "Multiple conditions can be declared under an `any` or `all` statement. A direct list of conditions (without `any` or `all` statements) is also supported for backwards compatibility but will be deprecated in the next major release. See: https://kyverno.io/docs/writing-policies/validate/#deny-rules",
+                        "x-kubernetes-preserve-unknown-fields": true
+                      }
+                    }
+                  },
+                  "foreach": {
+                    "description": "ForEach applies policy rule changes to nested elements.",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "description": "ForEach applies policy rule checks to nested elements.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "anyPattern": {
+                          "description": "AnyPattern specifies list of validation patterns. At least one of the patterns must be satisfied for the validation rule to succeed.",
+                          "x-kubernetes-preserve-unknown-fields": true
+                        },
+                        "context": {
+                          "description": "Context defines variables and data sources that can be used during rule execution.",
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "description": "ContextEntry adds variables and data sources to a rule Context. Either a ConfigMap reference or a APILookup must be provided.",
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "properties": {
+                              "apiCall": {
+                                "description": "APICall defines an HTTP request to the Kubernetes API server. The JSON data retrieved is stored in the context.",
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "required": [
+                                  "urlPath"
+                                ],
+                                "properties": {
+                                  "jmesPath": {
+                                    "description": "JMESPath is an optional JSON Match Expression that can be used to transform the JSON response returned from the API server. For example a JMESPath of \"items | length(@)\" applied to the API server response to the URLPath \"/apis/apps/v1/deployments\" will return the total count of deployments across all namespaces.",
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "urlPath": {
+                                    "description": "URLPath is the URL path to be used in the HTTP GET request to the Kubernetes API server (e.g. \"/api/v1/namespaces\" or  \"/apis/apps/v1/deployments\"). The format required is the same format used by the `kubectl get --raw` command.",
+                                    "type": "string"
+                                  }
+                                }
+                              },
+                              "configMap": {
+                                "description": "ConfigMap is the ConfigMap reference.",
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "required": [
+                                  "name"
+                                ],
+                                "properties": {
+                                  "name": {
+                                    "description": "Name is the ConfigMap name.",
+                                    "type": "string"
+                                  },
+                                  "namespace": {
+                                    "description": "Namespace is the ConfigMap namespace.",
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              },
+                              "name": {
+                                "description": "Name is the variable name.",
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            }
+                          }
+                        },
+                        "deny": {
+                          "description": "Deny defines conditions used to pass or fail a validation rule.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "conditions": {
+                              "description": "Multiple conditions can be declared under an `any` or `all` statement. A direct list of conditions (without `any` or `all` statements) is also supported for backwards compatibility but will be deprecated in the next major release. See: https://kyverno.io/docs/writing-policies/validate/#deny-rules",
+                              "x-kubernetes-preserve-unknown-fields": true
+                            }
+                          }
+                        },
+                        "list": {
+                          "description": "List specifies a JMESPath expression that results in one or more elements to which the validation logic is applied.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "pattern": {
+                          "description": "Pattern specifies an overlay-style pattern used to check resources.",
+                          "x-kubernetes-preserve-unknown-fields": true
+                        },
+                        "preconditions": {
+                          "description": "Preconditions are used to determine if a policy rule should be applied by evaluating a set of conditions. The declaration can contain nested `any` or `all` statements. See: https://kyverno.io/docs/writing-policies/preconditions/",
+                          "x-kubernetes-preserve-unknown-fields": true
+                        }
+                      }
+                    }
+                  },
+                  "message": {
+                    "description": "Message specifies a custom message to be displayed on failure.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "pattern": {
+                    "description": "Pattern specifies an overlay-style pattern used to check resources.",
+                    "x-kubernetes-preserve-unknown-fields": true
+                  }
+                }
+              },
+              "verifyImages": {
+                "description": "VerifyImages is used to verify image signatures and mutate them to add a digest",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "description": "ImageVerification validates that images that match the specified pattern are signed with the supplied public key. Once the image is verified it is mutated to include the SHA digest retrieved during the registration.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "attestations": {
+                      "description": "Attestations are optional checks for signed in-toto Statements used to verify the image. See https://github.com/in-toto/attestation. Kyverno fetches signed attestations from the OCI registry and decodes them into a list of Statement declarations.",
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "description": "Attestation are checks for signed in-toto Statements that are used to verify the image. See https://github.com/in-toto/attestation. Kyverno fetches signed attestations from the OCI registry and decodes them into a list of Statements.",
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "properties": {
+                          "conditions": {
+                            "description": "Conditions are used to verify attributes within a Predicate. If no Conditions are specified the attestation check is satisfied as long there are predicates that match the predicate type.",
+                            "type": [
+                              "array",
+                              "null"
+                            ],
+                            "items": {
+                              "description": "AnyAllCondition consists of conditions wrapped denoting a logical criteria to be fulfilled. AnyConditions get fulfilled when at least one of its sub-conditions passes. AllConditions get fulfilled only when all of its sub-conditions pass.",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "properties": {
+                                "all": {
+                                  "description": "AllConditions enable variable-based conditional rule execution. This is useful for finer control of when an rule is applied. A condition can reference object data using JMESPath notation. Here, all of the conditions need to pass",
+                                  "type": [
+                                    "array",
+                                    "null"
+                                  ],
+                                  "items": {
+                                    "description": "Condition defines variable-based conditional criteria for rule execution.",
+                                    "type": [
+                                      "object",
+                                      "null"
+                                    ],
+                                    "properties": {
+                                      "key": {
+                                        "description": "Key is the context entry (using JMESPath) for conditional rule evaluation.",
+                                        "x-kubernetes-preserve-unknown-fields": true
+                                      },
+                                      "operator": {
+                                        "description": "Operator is the operation to perform. Valid operators are Equals, NotEquals, In and NotIn.",
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ],
+                                        "enum": [
+                                          "Equals",
+                                          "NotEquals",
+                                          "In",
+                                          "NotIn",
+                                          "GreaterThanOrEquals",
+                                          "GreaterThan",
+                                          "LessThanOrEquals",
+                                          "LessThan",
+                                          "DurationGreaterThanOrEquals",
+                                          "DurationGreaterThan",
+                                          "DurationLessThanOrEquals",
+                                          "DurationLessThan"
+                                        ]
+                                      },
+                                      "value": {
+                                        "description": "Value is the conditional value, or set of values. The values can be fixed set or can be variables declared using using JMESPath.",
+                                        "x-kubernetes-preserve-unknown-fields": true
+                                      }
+                                    }
+                                  }
+                                },
+                                "any": {
+                                  "description": "AnyConditions enable variable-based conditional rule execution. This is useful for finer control of when an rule is applied. A condition can reference object data using JMESPath notation. Here, at least one of the conditions need to pass",
+                                  "type": [
+                                    "array",
+                                    "null"
+                                  ],
+                                  "items": {
+                                    "description": "Condition defines variable-based conditional criteria for rule execution.",
+                                    "type": [
+                                      "object",
+                                      "null"
+                                    ],
+                                    "properties": {
+                                      "key": {
+                                        "description": "Key is the context entry (using JMESPath) for conditional rule evaluation.",
+                                        "x-kubernetes-preserve-unknown-fields": true
+                                      },
+                                      "operator": {
+                                        "description": "Operator is the operation to perform. Valid operators are Equals, NotEquals, In and NotIn.",
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ],
+                                        "enum": [
+                                          "Equals",
+                                          "NotEquals",
+                                          "In",
+                                          "NotIn",
+                                          "GreaterThanOrEquals",
+                                          "GreaterThan",
+                                          "LessThanOrEquals",
+                                          "LessThan",
+                                          "DurationGreaterThanOrEquals",
+                                          "DurationGreaterThan",
+                                          "DurationLessThanOrEquals",
+                                          "DurationLessThan"
+                                        ]
+                                      },
+                                      "value": {
+                                        "description": "Value is the conditional value, or set of values. The values can be fixed set or can be variables declared using using JMESPath.",
+                                        "x-kubernetes-preserve-unknown-fields": true
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "predicateType": {
+                            "description": "PredicateType defines the type of Predicate contained within the Statement.",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    "image": {
+                      "description": "Image is the image name consisting of the registry address, repository, image, and tag. Wildcards ('*' and '?') are allowed. See: https://kubernetes.io/docs/concepts/containers/images.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "key": {
+                      "description": "Key is the PEM encoded public key that the image or attestation is signed with.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "repository": {
+                      "description": "Repository is an optional alternate OCI repository to use for image signatures that match this rule. If specified Repository will override the default OCI image repository configured for the installation.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "schemaValidation": {
+          "description": "SchemaValidation skips policy validation checks. Optional. The default value is set to \"true\", it must be set to \"false\" to disable the validation checks.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "validationFailureAction": {
+          "description": "ValidationFailureAction controls if a validation policy rule failure should disallow the admission review request (enforce), or allow (audit) the admission review request and report an error in a policy report. Optional. The default value is \"audit\".",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "webhookTimeoutSeconds": {
+          "description": "WebhookTimeoutSeconds specifies the maximum time in seconds allowed to apply this policy. After the configured time expires, the admission request may fail, or may simply ignore the policy results, based on the failure policy. The default timeout is 10s, the value must be between 1 and 30 seconds.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int32"
+        }
+      }
+    },
+    "status": {
+      "description": "Status contains policy runtime information. Deprecated. Policy metrics are available via the metrics endpoint",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "ready"
+      ],
+      "properties": {
+        "ready": {
+          "description": "Ready indicates if the policy is ready to serve the admission request",
+          "type": "boolean"
+        }
+      }
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "kyverno.io",
+      "kind": "Policy",
+      "version": "v1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

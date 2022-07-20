@@ -1,0 +1,326 @@
+{
+  "description": "Cluster is the Schema for the clusters API",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "aro.openshift.io/v1alpha1"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "Cluster"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta_v2"
+    },
+    "spec": {
+      "description": "ClusterSpec defines the desired state of Cluster",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "acrDomain": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "apiIntIP": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "architectureVersion": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "azEnvironment": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "banner": {
+          "description": "Banner defines if a Banner should be shown to the customer",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "content": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "clusterResourceGroupId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "domain": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "gatewayDomains": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "gatewayPrivateEndpointIP": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "genevaLogging": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "configVersion": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "[0-9]+.[0-9]+"
+            },
+            "monitoringGCSAccount": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "enum": [
+                "AROClusterLogsINT",
+                "AROClusterLogsPROD",
+                "AROClusterLogs"
+              ]
+            },
+            "monitoringGCSEnvironment": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "enum": [
+                "DiagnosticsProd",
+                "Test",
+                "CaFairfax"
+              ]
+            },
+            "monitoringGCSNamespace": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "enum": [
+                "AROClusterLogsINT",
+                "AROClusterLogsPROD",
+                "AROClusterLogs"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "infraId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "ingressIP": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "internetChecker": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "urls": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "location": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "operatorflags": {
+          "description": "OperatorFlags defines feature gates for the ARO Operator",
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "resourceId": {
+          "description": "ResourceID is the Azure resourceId of the cluster",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "serviceSubnets": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "storageSuffix": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "vnetId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "status": {
+      "description": "ClusterStatus defines the observed state of Cluster",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "conditions": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "OperatorCondition is just the standard condition fields.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "lastTransitionTime": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time"
+              },
+              "message": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "reason": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "status": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "type": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "operatorVersion": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "redHatKeysPresent": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "aro.openshift.io",
+      "kind": "Cluster",
+      "version": "v1alpha1"
+    }
+  ],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}
